@@ -12,9 +12,9 @@
 
 <div align="center">
 
-|                                                          **손성오**                                                           |                                                        **이윤환**                                                        |                                                           **김수민**                                                            |                                                        **김영은**                                                         |                                                        **이서미**                                                         |
-| :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: |
-| [<img src="https://avatars.githubusercontent.com/u/131119152?v=4" height=150 width=150> <br/>](https://github.com/Sonseongoh) | [<img src="https://avatars.githubusercontent.com/u/86473590?v=4" height=150 width=150> <br/>](https://github.com/unanbb) | [<img src="https://avatars.githubusercontent.com/u/95954000?s=64&v=4" height=150 width=150> <br/>](https://github.com/ssuminii) | [<img src="https://avatars.githubusercontent.com/u/130392927?v=4" height=150 width=150> <br/>](https://github.com/95126m) | [<img src="https://avatars.githubusercontent.com/u/45891528?v=4" height=150 width=150> <br/>](https://github.com/e-sum-e) |
+|                                                          **손성오**                                                           |                                                        **이윤환**                                                        |                                                           **김수민**                                                            |
+| :---------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------: |
+| [<img src="https://avatars.githubusercontent.com/u/131119152?v=4" height=150 width=150> <br/>](https://github.com/Sonseongoh) | [<img src="https://avatars.githubusercontent.com/u/86473590?v=4" height=150 width=150> <br/>](https://github.com/unanbb) | [<img src="https://avatars.githubusercontent.com/u/95954000?s=64&v=4" height=150 width=150> <br/>](https://github.com/ssuminii) |
 |                                                                                                                               |
 
 </div>
@@ -47,8 +47,8 @@ $ npm run build
 
 ---
 
-[주요 기능 설명서](https://www.notion.so/9c799c5b8c5d48e09b7442aa41884e0a)
+[주요 기능 설명서](https://www.notion.so/d02f88e1f74344e78465d917f8e0adfd?pvs=4)
 
-[데이터 정의서](https://www.notion.so/aab49a2f995d42b1bb0e6cbb45975712)
+[데이터 정의서](https://www.notion.so/4ab179d65a054a3599ab22ea9faeec97?pvs=4)
 
-[플로우 차트](https://www.notion.so/e31345cc2c124d91ae64946299f306de)
+[플로우 차트](https://www.notion.so/6e14d512dd354ec69eb2d333a7956e7b?pvs=4)
