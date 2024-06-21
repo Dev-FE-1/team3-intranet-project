@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* body 설정 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100vh로 설정하여 뷰포트 전체 높이 사용 */
+  background-color: #e1e7ef;
+}
+
+/* 컨테이너 설정 */
+.container {
+  width: 304px;
+  height: 595px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 여기를 수정하여 전체 컨텐츠가 가운데에 위치하도록 함 */
+}
+
+.content {
+  width: 100%; /* .content를 container의 너비에 맞춤 */
+}
+
+.title-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 40px;
+  width: 100%; /* .title-box를 .content의 너비에 맞춤 */
+  padding-left: 10px; /* 왼쪽에 약간의 패딩 추가하여 글자들이 너무 바깥으로 붙지 않도록 함 */
+}
+
+.title-box #title {
+  margin-bottom: 5px;
+}
+
+.divider {
+  width: 90%;
+  border: none;
+  border-top: 1px solid #efefef; /* 원하는 색상과 두께로 설정 */
+  margin: 10px auto; /* 위아래로 약간의 여백 추가 */
+}
+
+.img-box {
+  width: 100%;
+  height: 10vh;
+  background-color: red;
+  margin-top: 30px;
+}
+
+.description-box {
+  width: 100%;
+  height: 28vh;
+  background-color: gray;
+  margin-top: 40px;
+}
+
+.divider2 {
+  width: 90%;
+  border: none;
+  border-top: 1px solid #efefef; /* 원하는 색상과 두께로 설정 */
+  margin: 15px auto; /* 위아래로 약간의 여백 추가 */
+}
+
+.button-zone {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.button-zone button {
+  color: white;
+  border-radius: 5px;
+  padding: 7px 15px;
+  border: none;
+  margin: 0 5px; /* 버튼 사이의 간격을 설정 */
+  cursor: pointer;
+}
+
+.button-zone #cancel {
+  color: white;
+  background-color: #e45d5d;
+  border-radius: 5px;
+}
+
+.button-zone #submit {
+  color: white;
+  background-color: #4b5b73;
+  border-radius: 5px;
+}
+
+.modal {
+  /*팝업 배경*/
+  display: none; /*평소에는 보이지 않도록*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal .modal-content {
+  /*팝업*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.modal .modal-content #delete {
+  color: white;
+  background-color: #4b5b73;
+  border-radius: 5px;
+}
+
+.modal .modal-content #modify {
+  color: white;
+  background-color: #4b5b73;
+  border-radius: 5px;
+}
+
+.modal .on {
+  display: block;
+}

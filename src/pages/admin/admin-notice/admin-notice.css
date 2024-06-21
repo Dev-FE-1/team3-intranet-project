@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* body 설정 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100vh로 설정하여 뷰포트 전체 높이 사용 */
+  background-color: #e1e7ef;
+}
+
+/* 컨테이너 설정 */
+.container {
+  width: 304px;
+  height: 595px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* 자식 요소의 상대적 위치 설정 */
+}
+
+/* 추가 버튼 설정 */
+.add-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  background-color: #4b5b73;
+  border: none;
+  position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+  right: 16px; /* 오른쪽 여백 */
+  bottom: 16px; /* 아래쪽 여백 */
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #64b5f6;
+}

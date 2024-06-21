@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Notice Main</title>
+    <link rel="stylesheet" href="./admin-notice-content.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="title-box">
+          <div id="title">이서미님의 퇴사</div>
+          <div id="writer">이서미</div>
+        </div>
+        <hr class="divider" />
+        <div class="img-box"></div>
+        <div class="description-box"></div>
+        <hr class="divider2" />
+        <div class="button-zone">
+          <button id="cancel">삭제</button>
+          <button id="submit">수정</button>
+        </div>
+
+        <!-- 모달창 -->
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <h3>정말 삭제 하시겠습니까?</h3>
+            <div class="button-zone">
+              <button id="delete">취소</button>
+              <button id="modify">확인</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

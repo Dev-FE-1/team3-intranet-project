@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* body 설정 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 100vh로 설정하여 뷰포트 전체 높이 사용 */
+  background-color: #e1e7ef;
+}
+
+/* 컨테이너 설정 */
+.container {
+  width: 304px;
+  height: 595px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-box {
+  width: 260px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+  margin-top: 40px;
+}
+.title-box input {
+  margin-top: 10px;
+}
+
+.description {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.description textarea {
+  width: 260px;
+  height: 260px;
+  resize: none;
+  margin-top: 10px;
+}
+
+.image-upload {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.image-upload .image-upload-box {
+  border: 1px solid #dcdcdc;
+  width: 260px;
+  height: 25px;
+  margin-top: 10px;
+}
+
+.button-zone {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-zone button {
+  color: white;
+  border-radius: 5px;
+  padding: 7px 15px;
+  border: none;
+  margin: 0 5px; /* 버튼 사이의 간격을 설정 */
+  cursor: pointer;
+}
+
+.button-zone #cancel {
+  color: white;
+  background-color: #e45d5d;
+  border-radius: 5px;
+}
+
+.button-zone #submit {
+  color: white;
+  background-color: #4b5b73;
+  border-radius: 5px;
+}
