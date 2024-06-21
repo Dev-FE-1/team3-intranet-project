@@ -83,7 +83,7 @@ body {
   cursor: pointer;
 }
 
-.button-zone #cancel {
+.button-zone #delete {
   color: white;
   background-color: #e45d5d;
   border-radius: 5px;
@@ -118,18 +118,18 @@ body {
   border-radius: 20px;
 }
 
+.modal .modal-content #deleteCancel {
+  color: white;
+  background-color: #4b5b73;
+  border-radius: 5px;
+}
+
 .modal .modal-content #delete {
   color: white;
   background-color: #4b5b73;
   border-radius: 5px;
 }
 
-.modal .modal-content #modify {
-  color: white;
-  background-color: #4b5b73;
-  border-radius: 5px;
-}
-
-.modal .on {
+.modal.on {
   display: block;
 }
