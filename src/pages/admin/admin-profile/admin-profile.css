@@ -1,0 +1,163 @@
+/* COMMON */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+html,
+body{
+  width:100%;
+  height:100%;
+  font-size:16px;
+}
+/* FONT */
+.big{
+  font-size:24px;
+}
+.small{
+  font-size: 12px;
+}
+.smaller{
+  font-size:10px;
+}
+.bold{
+  font-weight:700;
+}
+.semi-bold{
+  font-weight: 600;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+  height:100%;
+  background-color: #e1e7ef;
+}
+
+/* CONTENTS */
+.card{
+  position:relative;
+  width:375px;
+  max-width: 375px;
+  height:720px;
+  max-height: 720px;
+  min-height: 720px;
+  background: linear-gradient(to bottom,#7D8FAA,#4D596B 20%);
+  
+  /* plus */
+  border-radius: 10px;
+  overflow: hidden;
+}
+.proflie-header{
+  width:100%;
+  height: 50px;
+  /* border-bottom: 1px solid #7D8FAA; */
+  color:#E2E4E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /*header 위에 배치*/
+  z-index:1;
+}
+.proflie-header > img{
+  position: absolute;
+  left:0;
+  color:#E2E4E8;
+  cursor: pointer;
+  padding:10px;
+}
+.profile{
+  position: absolute;
+  display: flex;
+  width:inherit;
+  height:570px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 40px 40px 0 0;
+  bottom:0px;
+  padding-bottom:30px;
+}
+.profile > img{
+  display: block;
+  position: absolute;
+  width: 139px;
+  height: 139px;
+  background-color: white;
+  overflow: hidden;
+  border:5px solid white;
+  border-radius: 50%;
+  top:0px;
+  transform: translate(0,-50%);
+}
+.profile > #name{
+  text-align: center;
+  width:81px;
+  margin:14px 147px 33px;
+}
+.data{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+}
+
+.data > label{
+  width: 320px;
+  position: relative;
+  margin: 10px;
+  color:#B3B3B3;
+}
+
+.data label input{
+  position:absolute;
+  right:0px;
+}
+
+.btn-submit{
+  position: absolute;
+  width:246px;
+  height:43px;
+  background-color: #7D8FAA;
+  color:#E2E4E8;
+  border:none;
+  border-radius: 5px;
+  bottom:31px;
+  /* right:15px;
+  left:15px; */
+  cursor:pointer;
+  margin:10px;
+  bottom:-70px;
+}
+.btn-submit:hover{
+  background-color: #4D596B;
+}
+
+#email,
+#id,
+#phoneNumber,
+#department,
+#position,
+#address,
+#dateOfBirth,
+#etc{
+
+  width: 212px;
+  height:22px;
+}
+
+/* .email-box{
+  margin: 10px 5px 10px 15px;
+  width: 100px;
+  height:22px;
+} */
+
+/* combo box */
+/* .data option{
+  width: 100px;
+  height:22px;
+} */

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin-profile.css">
+  <script src="admin-profile.js"></script>
+  <title>Admin Profile Page</title>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="proflie-header semi-bold">
+        <img src="/public/images/profile/Vector 9.png" alt="back">
+        <p>Profile</p>
+      </div>
+      <div class="profile">
+        <img src="https://shorturl.at/x0AaY" alt="profile">
+        <p id="name" class="big bold">이윤환</p>
+        <form class="data">
+          <!-- <p>이메일<input type="text" class="email-box">@
+            <select>
+              <option value="none">==선택==</option>
+              <option value="naver">naver.com</option>
+              <option value="google">google.com</option>
+              <option value="daum">daum.com</option>
+            </select>
+          </p> -->
+          <label for="email">이메일
+            <input type="email"
+                   id="email"
+                   pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*$"
+                   placeholder=""
+                   required>
+          </label>
+          <label for="id">사번<input type="text" pattern="^[0-9]*$" id="id" required></label>
+          <label for="phoneNumber">핸드폰<input type="text" id="phoneNumber"></label>
+          <label for="department">부서<input type="text" pattern="^[a-zA-Z0-9]*$" id="department" required></label>
+          <label for="position">직급<input type="text" id="position" required></label>
+          <label for="address">자택 주소<input type="text" id="address"></label>
+          <label for="dateOfBirth">생년월일<input type="text" id="dateOfBirth"></label>
+          <label for="etc">기타 사항<input type="text" id="etc"></label>
+          <button type="submit" class="btn-submit bold" 
+          >SAVE</button>
+          <!-- <button type="button" class="btn-submit" 
+          onclick="location.href='javascript(void(0))'">저장</button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
