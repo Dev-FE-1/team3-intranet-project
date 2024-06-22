@@ -1,30 +1,46 @@
+/* 기본 스타일 설정 */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* body 설정 */
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* 100vh로 설정하여 뷰포트 전체 높이 사용 */
+  height: 100vh;
+  width: 100%;
   background-color: #e1e7ef;
 }
 
-/* 컨테이너 설정 */
 .container {
-  width: 304px;
-  height: 595px;
+  width: 336px;
+  height: 84%;
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 여기를 수정하여 전체 컨텐츠가 가운데에 위치하도록 함 */
+  align-items: center;
+  position: relative;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+header {
+  background-color: red;
+  height: 48px;
+  width: 336px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
 }
 
 .content {
-  width: 100%; /* .content를 container의 너비에 맞춤 */
+  width: 100%;
+  margin-top: 10px;
 }
 
 .title-box {
@@ -32,8 +48,8 @@ body {
   flex-direction: column;
   align-items: flex-start;
   margin-top: 40px;
-  width: 100%; /* .title-box를 .content의 너비에 맞춤 */
-  padding-left: 10px; /* 왼쪽에 약간의 패딩 추가하여 글자들이 너무 바깥으로 붙지 않도록 함 */
+  width: 100%;
+  padding-left: 10px;
 }
 
 .title-box #title {
@@ -43,8 +59,8 @@ body {
 .divider {
   width: 90%;
   border: none;
-  border-top: 1px solid #efefef; /* 원하는 색상과 두께로 설정 */
-  margin: 10px auto; /* 위아래로 약간의 여백 추가 */
+  border-top: 1px solid #efefef;
+  margin: 10px auto;
 }
 
 .img-box {
@@ -56,7 +72,7 @@ body {
 
 .description-box {
   width: 100%;
-  height: 28vh;
+  height: 300px;
   background-color: gray;
   margin-top: 40px;
 }
@@ -64,8 +80,9 @@ body {
 .divider2 {
   width: 90%;
   border: none;
-  border-top: 1px solid #efefef; /* 원하는 색상과 두께로 설정 */
-  margin: 15px auto; /* 위아래로 약간의 여백 추가 */
+  border-top: 1px solid #efefef;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .button-zone {
@@ -79,7 +96,7 @@ body {
   border-radius: 5px;
   padding: 7px 15px;
   border: none;
-  margin: 0 5px; /* 버튼 사이의 간격을 설정 */
+  margin: 0 5px;
   cursor: pointer;
 }
 
@@ -96,8 +113,7 @@ body {
 }
 
 .modal {
-  /*팝업 배경*/
-  display: none; /*평소에는 보이지 않도록*/
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -108,7 +124,6 @@ body {
 }
 
 .modal .modal-content {
-  /*팝업*/
   position: absolute;
   top: 50%;
   left: 50%;
@@ -132,4 +147,26 @@ body {
 
 .modal.on {
   display: block;
+}
+
+/* 768px 이상일 때 적용할 스타일 */
+@media (min-width: 768px) {
+  .container {
+    width: 70%;
+  }
+
+  header {
+    width: 70%;
+  }
+}
+
+/* 1024px 이상일 때 적용할 스타일 */
+@media (min-width: 1024px) {
+  .container {
+    width: 60%;
+  }
+
+  header {
+    width: 60%;
+  }
 }
