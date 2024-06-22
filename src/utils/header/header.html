@@ -12,28 +12,24 @@
       <nav>
         <ul class="header-menu">
           <li>
-            <img
-              src="../../../public/images/header/back-button.png"
-              alt="back-button"
-            />
+            <a href="/">
+              <img src="../../../public/images/header/back.svg" alt="back-button"/>
+            </a>
           </li>
           <li>
-            <img
-              src="../../../public/images/header/Group_light.png"
-              alt="employee-list"
-            />
+            <a href="/employee-list">
+              <img src="../../../public/images/header/employee-list.svg" alt="employee-list"/>
+            </a>
           </li>
           <li>
-            <img
-              src="../../../public/images/header/Group_light.png"
-              alt="notice"
-            />
+            <a href="/notice">
+              <img src="../../../public/images/header/notice.svg" alt="notice"/>
+            </a>
           </li>
           <li>
-            <img
-              src="../../../public/images/header/Group_light.png"
-              alt="absent-request"
-            />
+            <a href="/absent-request">
+              <img src="../../../public/images/header/absent-request.svg" alt="absent-request"/>
+            </a>
           </li>
         </ul>
         <ul class="header-profile">
@@ -56,9 +52,15 @@
           <li>
             <img src="../../../public/images/header/back-button.png" alt="" />
           </li>
-          <li>임직원 리스트</li>
-          <li>공지사항</li>
-          <li>부재신청</li>
+          <li>
+            <a href="/employee-list">임직원 리스트</a>
+          </li>
+          <li>
+            <a href="/notice">공지사항</a>
+          </li>
+          <li>
+            <a href="/absent-request">부재신청</a>
+          </li>
         </ul>
         <ul class="header-profile">
           <li>
@@ -73,5 +75,11 @@
         </ul>
       </nav>
     </header>
+
+    <div id="app">
+      
+    </div>
+
+    <script src="header.js" type="module"></script>
   </body>
 </html>
