@@ -1,38 +1,44 @@
-function app() {
-    window.addEventListener('popstate', (event) => {
-        console.log('popstate');
-        route();
-    });
+import adminNotice from '../../pages/admin/notice/adminNotice.js';
+import absentRequest from '../../pages/admin/absent-request/absentRequest.js';
+import employeeList from '../../pages/admin/employee-list/employeeList.js';
 
-    document.body.addEventListener('click', navigatePage);
+function app() {
+  window.addEventListener("popstate", (event) => {
+    console.log("popstate");
     route();
+  });
+
+  document.body.addEventListener("click", navigatePage);
+  route();
 }
 
 function navigatePage(event) {
-    event.preventDefault();
+  event && event.preventDefault();
+  const anchor = event.target.closest("a");
 
-    const anchor = event.target.closest('a');
-    const path = anchor.getAttribute('href');
+  // 앵커에 값이 없을 수도 있으니 방어코드 작성
+  if (anchor && anchor.href) {
+    const path = anchor.getAttribute("href");
     history.pushState(null, null, path);
-
     route();
+  }
 }
 
 function route() {
-    const content = document.querySelector('#app');
-    const path = location.pathname;
+  // const content = document.querySelector("#app");
+  const path = location.pathname;
 
-    switch(path) {
-        case '/employee-list':
-            content.innerHTML = `<h1>임직원 리스트 페이지</h1>`
-            break;
-        case '/notice':
-            content.innerHTML = `<h1>공지사항 페이지</h1>`
-            break;
-        case '/absent-request':
-            content.innerHTML = `<h1>부재신청 페이지</h1>`
-            break;
-    }
+  switch (path) {
+    case "/employee-list":
+      employeeList('#app');
+      break;
+    case "/notice":
+      adminNotice('#app');
+      break;
+    case "/absent-request":
+      absentRequest('#app');
+      break;
+  }
 }
 
-document.addEventListener('DOMContentLoaded', app);
+document.addEventListener("DOMContentLoaded", app);
