@@ -103,6 +103,7 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
 .frame label{
   display: flex;
@@ -124,12 +125,10 @@ body{
   transform: translate(0,-50%);
 }
 .frame input#name{
-  position:absolute;
-  top:12.5%;
-  left:0;
-  right:0;
-  margin:10px auto;
-  width:25%;
+  position:relative;
+  height:25px;
+  margin:5vh auto;
+  width:35%;
   text-align: center;
 }
 
@@ -141,7 +140,8 @@ body{
   justify-content: center;
   align-items: center;
   position:relative;
-  height:100%;
+  height:auto;
+  min-height:480px;
 }
 
 .data .frame-bottom > label{
@@ -172,7 +172,7 @@ body{
   left:0;
   cursor:pointer;
   margin:10px auto;
-  bottom:-80px;
+  bottom:-10vh;
 }
 .btn-submit:hover{
   background-color: #4D596B;
@@ -193,9 +193,7 @@ body{
 /* media query */
 @media(min-width:768px){
   .card{
-    width:100%;
-    max-width: 1280px;
-    height:100vh;
+    max-width: 1440px;
   }
   .proflie-header{
     height: 70px;
@@ -211,7 +209,7 @@ body{
     object-fit: contain;
     width:162px;
     height:162px;
-    transform: translate(-110%,-50%);
+    transform: translate(-130%,-50%);
   }
   .data .frame-bottom > label{
     width: 440px;
@@ -224,8 +222,9 @@ body{
     align-items: center;
   }
   .frame input#name{
-    transform: translate(-30%,-120%);
+    margin-left:10%;
   }
+
   /* .data{
     transform: translateY(-30px);
     margin-top:10%;
