@@ -42,14 +42,14 @@ body{
   /* height:720px; */
   height: 100vh;
   background: linear-gradient(to bottom,#7D8FAA,#4D596B 20%);
-  
+
   /* plus */
   /* border-radius: 10px; */
   /* overflow: hidden; */
 }
 .proflie-header{
   width:100%;
-  height: 50px;
+  height: 48px;
   /* border-bottom: 1px solid #7D8FAA; */
   color:#E2E4E8;
   display: flex;
@@ -68,18 +68,17 @@ body{
 }
 .profile{
   position: absolute;
-  bottom:0;
+  bottom:0px;
   width:inherit;
   /* height:570px; */
   height:75%;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
+  /* justify-content: center; */
   align-items: center;
   background-color: white;
   border-radius: 40px 40px 0 0;
-  
-  padding-bottom:10%;
+  /* padding-bottom:30px; */
 }
 .profile > img{
   object-fit: contain;
@@ -94,17 +93,21 @@ body{
   top:0px;
   transform: translate(0,-50%);
 }
+
 /* .profile > #name{
   text-align: center;
   width:81px;
   margin:14px 147px 33px;
 } */
 .data{
+  /* margin-top: 20%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position:relative;
+  height:100%;
+  
 }
 
 .data > label{
@@ -119,7 +122,14 @@ body{
 
 .data label input{
   position:absolute;
-  right:0px;
+  right:0;
+}
+.data label input#name{
+  width:25%;
+  height:25px;
+  text-align: center;
+  left:0;
+  margin:0 auto;
 }
 
 .btn-submit{
@@ -164,7 +174,7 @@ body{
     font-size:20px;
   }
   .proflie-header > img{
-    padding:20px;
+    display: none;
   }
   .profile{
     height:75%;
@@ -190,6 +200,7 @@ body{
   }
   .data{
     transform: translateY(-30px);
+    /* margin-top:10%; */
   }
   /* data label input */
   #email,
@@ -205,11 +216,16 @@ body{
     height:34px;
     font-size:18px;
   }
+  .data label input#name{
+    height:34px;
+    font-size:18px;
+  }
   .btn-submit{
     width:434px;
     transform: translateY(10px);
   }
 }
+
 /* .email-box{
   margin: 10px 5px 10px 15px;
   width: 100px;

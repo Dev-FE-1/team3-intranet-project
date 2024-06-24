@@ -102,15 +102,19 @@ body{
 .data{
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   position:relative;
+  margin-top:20%;
 }
 
 .data > label{
+  width:100%;
+  max-width:440px;
+  margin: 10px 0;
   width: 305px;
   position: relative;
-  margin: 10px;
   color:#B3B3B3;
   display: flex;
   justify-content: space-between;
@@ -119,10 +123,17 @@ body{
 
 .data label input{
   position:absolute;
+  width: 70%;
   right:0px;
+  flex:1;
+  min-width:212px;
+  max-width:312px;
+  height:34px;
+  padding-left:10px;
 }
 
 .btn-submit{
+  max-width: 440px;
   position: absolute;
   width:246px;
   height:43px;
