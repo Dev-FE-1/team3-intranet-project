@@ -43,15 +43,16 @@ header {
 .content-zone {
   width: 100%;
   height: 100%;
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .content {
   width: 100%;
-  height: 150px;
-  padding: 16px;
-  margin-bottom: 40px; /* 각 .content 요소 사이의 거리 설정 */
-  margin-top: 10px;
+  height: 200px;
+  padding: 8px 44px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -71,8 +72,8 @@ header {
 
 /* 추가 버튼 설정 */
 .add-button {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   color: white;
   background-color: #4b5b73;
@@ -81,10 +82,12 @@ header {
   right: 16px; /* 오른쪽 여백 */
   bottom: 16px; /* 아래쪽 여백 */
   cursor: pointer;
+  font-size: 30px;
 }
 
 .add-button:hover {
   background-color: #64b5f6;
+  transform: scale(1.15);
 }
 
 /* 미디어 쿼리 추가 */
