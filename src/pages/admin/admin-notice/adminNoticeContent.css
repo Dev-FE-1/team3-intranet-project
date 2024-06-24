@@ -1,17 +1,14 @@
-/* 기본 스타일 설정 */
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
 }
 
 body {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  width: 100%; /* 추가 */
 }
 
 .container {
@@ -22,7 +19,6 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  max-width: 375px;
 }
 
 .header-zone {
@@ -41,13 +37,13 @@ header {
 
 .content-wrapper {
   width: 100%;
-  padding: 0px 20px;
+  height: 100%;
+  padding: 20px;
 }
 
 .content {
   width: 100%;
-  height: 550px;
-  margin-top: 30px;
+  height: 100%;
   background-color: white;
   border-radius: 5px;
   display: flex;
