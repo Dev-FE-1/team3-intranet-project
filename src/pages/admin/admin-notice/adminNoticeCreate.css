@@ -13,6 +13,7 @@ body {
   height: 100vh; /* 100vh로 설정하여 뷰포트 전체 높이 사용 */
   width: 100%;
   background-color: #e1e7ef;
+  overflow: hidden; /* 추가 */
 }
 
 /* 컨테이너 설정 */
@@ -26,6 +27,7 @@ body {
   position: relative; /* 자식 요소의 상대적 위치 설정 */
   margin-top: 10px; /* header 높이만큼 margin-top 추가 */
   border-radius: 5px;
+  overflow: hidden; /* 추가 */
 }
 .content {
   margin-top: 10px;
