@@ -42,14 +42,14 @@ body{
   /* height:720px; */
   height: 100vh;
   background: linear-gradient(to bottom,#7D8FAA,#4D596B 20%);
-  
+
   /* plus */
   /* border-radius: 10px; */
   /* overflow: hidden; */
 }
 .proflie-header{
   width:100%;
-  height: 50px;
+  height: 48px;
   /* border-bottom: 1px solid #7D8FAA; */
   color:#E2E4E8;
   display: flex;
@@ -66,22 +66,51 @@ body{
   cursor: pointer;
   padding:10px;
 }
+
 .profile{
   position: absolute;
-  bottom:0;
+  bottom:0px;
   width:inherit;
   /* height:570px; */
   height:75%;
+  
   display: flex;
+
   flex-direction: column;
-  /* justify-content: space-around; */
+  /* justify-content: center; */
   align-items: center;
   background-color: white;
   border-radius: 40px 40px 0 0;
-  
-  padding-bottom:10%;
+  /* padding-bottom:30px; */
 }
-.profile > img{
+/* .profile > img{
+  object-fit: contain;
+  display: block;
+  position: absolute;
+  width: 139px;
+  height: 139px;
+  background-color: white;
+  overflow: hidden;
+  border:5px solid white;
+  border-radius: 50%;
+  top:0px;
+  transform: translate(0,-50%);
+} */
+.frame{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.frame label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.frame label > img{
   object-fit: contain;
   display: block;
   position: absolute;
@@ -94,20 +123,28 @@ body{
   top:0px;
   transform: translate(0,-50%);
 }
-/* .profile > #name{
+.frame input#name{
+  position:absolute;
+  top:12.5%;
+  left:0;
+  right:0;
+  margin:10px auto;
+  width:25%;
   text-align: center;
-  width:81px;
-  margin:14px 147px 33px;
-} */
+}
+
+
 .data{
+  /* margin-top: 20%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position:relative;
+  height:100%;
 }
 
-.data > label{
+.data .frame-bottom > label{
   width: 305px;
   position: relative;
   margin: 10px;
@@ -117,10 +154,11 @@ body{
   align-items: center;
 }
 
-.data label input{
+/* .data .frame-bottom label input{
   position:absolute;
-  right:0px;
-}
+  right:0;
+} */
+
 
 .btn-submit{
   position: absolute;
@@ -156,7 +194,7 @@ body{
 @media(min-width:768px){
   .card{
     width:100%;
-    max-width: 1024px;
+    max-width: 1280px;
     height:100vh;
   }
   .proflie-header{
@@ -164,18 +202,18 @@ body{
     font-size:20px;
   }
   .proflie-header > img{
-    padding:20px;
+    display: none;
   }
   .profile{
     height:75%;
   }
-  .profile > img{
+  .frame label > img{
     object-fit: contain;
     width:162px;
     height:162px;
     transform: translate(-110%,-50%);
   }
-  .data > label{
+  .data .frame-bottom > label{
     width: 440px;
     position: relative;
     margin: 10px;
@@ -185,12 +223,14 @@ body{
     justify-content:space-between;
     align-items: center;
   }
-  .profile > #name{
-    transform: translate(-50%,-150%);
+  .frame input#name{
+    transform: translate(-30%,-120%);
   }
-  .data{
+  /* .data{
     transform: translateY(-30px);
-  }
+    margin-top:10%;
+  } */
+
   /* data label input */
   #email,
   #id,
@@ -205,11 +245,16 @@ body{
     height:34px;
     font-size:18px;
   }
+  .data .frame label input#name{
+    height:34px;
+    font-size:18px;
+  }
   .btn-submit{
     width:434px;
     transform: translateY(10px);
   }
 }
+
 /* .email-box{
   margin: 10px 5px 10px 15px;
   width: 100px;
@@ -220,4 +265,10 @@ body{
 /* .data option{
   width: 100px;
   height:22px;
+} */
+
+/* .profile > #name{
+  text-align: center;
+  width:81px;
+  margin:14px 147px 33px;
 } */
