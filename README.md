@@ -6,6 +6,8 @@
 
 사용하기 쉽고 직관적인 인터페이스를 제공하여, 임직원들이 상황에 필요한 자료와 도구를 빠르게 사용할 수 있도록 도와줍니다.
 
+<br/>
+
 ### 팀원 소개
 
 ---
@@ -18,6 +20,15 @@
 |                                                                                                                               |
 
 </div>
+
+### 역할 분담
+
+---
+
+[역할 분담](https://sideways-cyclone-917.notion.site/Sprint-Planning-Status-5dbee8fb8f214880bb59257547004dd0?pvs=4)
+![역할 분담](./public/images/roll.png)
+
+<br/>
 
 ### 설치
 
