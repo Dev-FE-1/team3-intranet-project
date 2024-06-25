@@ -18,6 +18,8 @@ li {
 
 body {
   background-color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .header-desktop {
@@ -122,6 +124,7 @@ nav {
     height: 70px;
     background-color: white;
     padding: 0 40px;
+    max-width: 1440px;
   }
 
   .header-menu li {
@@ -167,7 +170,7 @@ nav {
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: middle;
-    width: 200px;
+    width: 160px;
     margin-right: 20px;
     padding: 10px 0;
   }
