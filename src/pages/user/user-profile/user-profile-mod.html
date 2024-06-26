@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="admin-profile-mod.css">
-  <script defer src="adminProfile.js"></script>
-  <title>Admin Profile Page</title>
+  <link rel="stylesheet" href="user-profile-mod.css">
+  <script defer src=""></script>
+  <title>User Profile Modifiy Page</title>
 </head>
 <body>
   <div class="container">
@@ -19,7 +19,7 @@
         <form class="data">
           <div class="frame">
             <label for="image"><img src="https://shorturl.at/x0AaY" alt="profile" id="image"></label>
-            <label for="name"><input type="text" id="name" class="bold"></label>
+            <label for="name"><input type="text" id="name" class="bold" placeholder="성이름" disabled></label>
           </div>
           <!-- <label for="name"><input type="text" id="name" class=" bold"></label> -->
           <div class="frame-bottom">
@@ -27,13 +27,13 @@
               <input type="email"
                     id="email"
                     pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*$"
-                    placeholder="admin@gmail.com"
+                    placeholder="user@gmail.com"
                     required>
             </label>
-            <label for="id">사번<input type="text" pattern="^[0-9]*$" id="id" required></label>
+            <label for="id">사번<input type="text" pattern="^[0-9]*$" id="id" required disabled></label>
             <label for="phoneNumber">핸드폰<input type="text" id="phoneNumber"></label>
-            <label for="department">부서<input type="text" pattern="^[a-zA-Z0-9]*$" id="department" required></label>
-            <label for="position">직급<input type="text" id="position" required></label>
+            <label for="department">부서<input type="text" pattern="^[a-zA-Z0-9]*$" id="department" required disabled></label>
+            <label for="position">직급<input type="text" id="position" required disabled></label>
             <label for="address">자택 주소<input type="text" id="address"></label>
             <label for="dateOfBirth">생년월일<input type="text" id="dateOfBirth"></label>
             <label for="etc">기타 사항<input type="text" id="etc"></label>

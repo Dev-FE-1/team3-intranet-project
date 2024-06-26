@@ -125,7 +125,7 @@ body{
 .frame input#name{
   position:relative;
   height:30px;
-  line-height:30px;
+  line-height: 30px;
   padding: 0 10px;
   margin:5vh auto;
   width:35%;
@@ -133,12 +133,12 @@ body{
   font-size:20px;
 
   /* ? Design 1 */
-  /* border:none;
-  background-color: #f6f6f7;
-  border-radius: 10px; */
-  /* ? Design 2 */
   border:none;
-  border-bottom:1px solid #B3B3B3;
+  background-color: #f6f6f7;
+  border-radius: 10px;
+  /* ? Design 2 */
+  /* border:none;
+  border-bottom:1px solid #B3B3B3; */
 }
 
 
@@ -198,16 +198,21 @@ body{
   width: 212px;
   height:25px;
   padding-left: 10px;
-  outline:none; 
-  /* ? Design 1 */
-  /* border:none;
-  background-color: #f6f6f7;
-  border-radius: 10px; */
-  /* ? Design 2 */
-  border:none;
-  border-bottom:1px solid #B3B3B3;
-}
 
+  /* ? Design 1 */
+  border:none;
+  background-color: #f6f6f7;
+  border-radius: 10px;
+  /* ? Design 2 */
+  /* border:none;
+  border-bottom:1px solid #B3B3B3; */
+}
+input#name:disabled,
+input#id:disabled,
+input#position:disabled,
+input#department:disabled{
+  background-color: #e8e8e9;
+}
 /* media query */
 @media(min-width:768px){
   .card{
