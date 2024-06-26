@@ -3,7 +3,7 @@ import absentRequest from '../../pages/admin/absent-request/absentRequest.js';
 import employeeList from '../../pages/admin/employee-list/employeeList.js';
 
 function app() {
-  initializeWorkTimeButton();
+  workTimeButton();
   window.addEventListener("popstate", (event) => {
     console.log("popstate");
     route();
@@ -13,14 +13,14 @@ function app() {
   route();
 }
 
-function initializeWorkTimeButton() {
+function workTimeButton() {
   const openButtons = document.querySelectorAll('.header-time');
   const startTimeModal = document.querySelector('.start-time-modal');
   const endTimeModal = document.querySelector('.end-time-modal');
   const startButton = startTimeModal.querySelector('.start');
   const endButton = endTimeModal.querySelector('.end');
-  const closeButtonStart = startTimeModal.querySelector('.close');
-  const closeButtonEnd = endTimeModal.querySelector('.close');
+  // const closeButtonStart = startTimeModal.querySelector('.close');
+  // const closeButtonEnd = endTimeModal.querySelector('.close');
   const modalBackgroundStart = startTimeModal.querySelector('.modal-background');
   const modalBackgroundEnd = endTimeModal.querySelector('.modal-background');
 
@@ -38,7 +38,7 @@ function initializeWorkTimeButton() {
   function startWork() {
     workStartTime = Date.now();
     workInterval = setInterval(updateWorkTime, 1000);
-    openButtons.forEach(button => button.textContent = '0시간 0분');
+    openButtons.forEach(button => button.textContent = '0시간 0분 0초');
     toggleStartTimeModal();
   }
 
@@ -67,13 +67,18 @@ function initializeWorkTimeButton() {
     });
   });
 
-  startButton.addEventListener('click', startWork);
-  endButton.addEventListener('click', endWork);
-  closeButtonStart.addEventListener('click', toggleStartTimeModal);
-  closeButtonEnd.addEventListener('click', toggleEndTimeModal);
+  startButton.addEventListener('click', () => {
+    startWork();
+    toggleStartTimeModal();
+  });
+  endButton.addEventListener('click', () => {
+    endWork();
+    toggleEndTimeModal();
+  });
   modalBackgroundStart.addEventListener('click', toggleStartTimeModal);
   modalBackgroundEnd.addEventListener('click', toggleEndTimeModal);
 }
+
 
 function navigatePage(event) {
   const anchor = event.target.closest("a");
