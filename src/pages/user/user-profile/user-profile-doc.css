@@ -177,7 +177,7 @@ body{
 } */
 
 
-.btn-submit{
+.btn-edit{
   position: absolute;
   width:246px;
   height:43px;
@@ -191,7 +191,7 @@ body{
   margin:10px auto;
   bottom:-10vh;
 }
-.btn-submit:hover{
+.btn-edit:hover{
   background-color: #4D596B;
 }
 
@@ -276,7 +276,7 @@ body{
     height:34px;
     font-size:18px;
   }
-  .btn-submit{
+  .btn-edit{
     width:434px;
     transform: translateY(10px);
   }
