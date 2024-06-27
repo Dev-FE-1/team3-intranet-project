@@ -3,6 +3,103 @@ import absentRequest from '../../pages/admin/absent-request/absentRequest.js';
 import employeeList from '../../pages/admin/employee-list/employeeList.js';
 
 function app() {
+  const content = document.querySelector('#header');
+  content.innerHTML = `<header class="header-mobile">
+      <nav>
+        <ul class="header-menu">
+          <li>
+            <a href="/">
+              <img src="public/images/header/back.svg" alt="back-button"/>
+            </a>
+          </li>
+          <li>
+            <a href="/employee-list">
+              <img src="public/images/header/employee-list.svg" alt="employee-list"/>
+            </a>
+          </li>
+          <li>
+            <a href="/notice">
+              <img src="public/images/header/notice.svg" alt="notice"/>
+            </a>
+          </li>
+          <li>
+            <a href="/absent-request">
+              <img src="public/images/header/absent-request.svg" alt="absent-request"/>
+            </a>
+          </li>
+        </ul>
+        <ul class="header-profile">
+          <li>
+            <button class="header-time">Working Hours</button>
+          </li>
+          <li class="header-profile-image">
+            <img
+              src="public/images/header/header-profile.jpg"
+              alt="my-profile"
+            />
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <header class="header-desktop">
+      <nav>
+        <ul class="header-menu">
+          <li>
+            <a href="/">
+              <img src="public/images/header/favicon.ico" alt="oasis"/>
+            </a>
+          </li>
+          <li>
+            <a href="/employee-list">임직원 리스트</a>
+          </li>
+          <li>
+            <a href="/notice">공지사항</a>
+          </li>
+          <li>
+            <a href="/absent-request">부재신청</a>
+          </li>
+        </ul>
+        <ul class="header-profile">
+          <li>
+            <button class="header-time">Working Hours</button>
+          </li>
+          <li class="header-profile-image">
+            <img
+              src="public/images/header/header-profile.jpg"
+              alt="my-profile"
+            />
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="app"></div>
+
+    <!-- Working Hours Modal -->
+    <div class="start-time-modal hidden">
+      <div class="modal-background">
+        <div class="modal-content">
+          <p>근무를 시작하시겠습니까?</p>
+          <div class="time-button">
+            <button class="start">Yes</button>
+            <button class="close">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="end-time-modal hidden">
+      <div class="modal-background">
+        <div class="modal-content">
+          <p>근무를 종료하시겠습니까?</p>
+          <div class="time-button">
+            <button class="end">Yes</button>
+            <button class="close">No</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
   workTimeButton();
   window.addEventListener("popstate", (event) => {
     console.log("popstate");
