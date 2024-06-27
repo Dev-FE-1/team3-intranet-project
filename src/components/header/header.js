@@ -1,8 +1,8 @@
-import adminNotice, {
-  adminNoticeCreate,
-} from "../../pages/admin/notice/adminNotice.js";
+import adminNotice, { adminNoticeCreate, } from "../../pages/admin/notice/adminNotice.js";
 import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
+import adminProfile from '../../pages/admin/admin-profile/adminProfile.js';
+import userMainPage from '../../pages/user/user.js';
 
 function app() {
   const content = document.querySelector("#header");
@@ -35,10 +35,9 @@ function app() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <img
-              src="public/images/header/header-profile.jpg"
-              alt="my-profile"
-            />
+            <a href="/profile">
+              <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
+            </a>
           </li>
         </ul>
       </nav>
@@ -67,10 +66,9 @@ function app() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <img
-              src="public/images/header/header-profile.jpg"
-              alt="my-profile"
-            />
+            <a href="/profile">
+              <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
+            </a>
           </li>
         </ul>
       </nav>
@@ -183,9 +181,9 @@ function workTimeButton() {
 
 function navigatePage(event) {
   event.preventDefault();
-  const anchor = event.target.closest("a, .add-button"); // add-button도 이벤트를 감지하도록 수정
+  const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    const path = anchor.getAttribute("href") || anchor.dataset.path; // href나 data-path 속성을 가져옴
+    const path = anchor.getAttribute("href") || anchor.dataset.path;
     if (path) {
       history.pushState(null, null, path);
       route();
@@ -205,6 +203,9 @@ function route() {
   const path = location.pathname;
 
   switch (path) {
+    case "/":
+      userMainPage('#app')
+      break;
     case "/employee-list":
       employeeList("#app");
       break;
@@ -215,9 +216,12 @@ function route() {
     case "/absent-request":
       absentRequest("#app");
       break;
-    case "/notice/noticeCreate": // 새로운 경로 추가
+    case "/notice/noticeCreate":
       adminNoticeCreate("#app");
       loadCSS("../../src/pages/admin/admin-notice/adminNoticeCreate.css");
+      break;
+    case "/profile":
+      adminProfile('#app');
       break;
   }
 }
