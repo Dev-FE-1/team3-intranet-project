@@ -3,6 +3,8 @@ import adminNotice, {
 } from "../../pages/admin/notice/adminNotice.js";
 import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
+import "../../pages/admin/admin-notice/adminNotice.css";
+import "../../pages/admin/admin-notice/adminNoticeCreate.css";
 
 function app() {
   const content = document.querySelector("#header");
@@ -183,22 +185,14 @@ function workTimeButton() {
 
 function navigatePage(event) {
   event.preventDefault();
-  const anchor = event.target.closest("a, .add-button"); // add-button도 이벤트를 감지하도록 수정
+  const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    const path = anchor.getAttribute("href") || anchor.dataset.path; // href나 data-path 속성을 가져옴
+    const path = anchor.getAttribute("href") || anchor.dataset.path;
     if (path) {
       history.pushState(null, null, path);
       route();
     }
   }
-}
-
-function loadCSS(filename) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  link.href = filename;
-  document.head.appendChild(link);
 }
 
 function route() {
@@ -210,14 +204,12 @@ function route() {
       break;
     case "/notice":
       adminNotice("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNotice.css");
       break;
     case "/absent-request":
       absentRequest("#app");
       break;
-    case "/notice/noticeCreate": // 새로운 경로 추가
+    case "/notice/noticeCreate":
       adminNoticeCreate("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNoticeCreate.css");
       break;
   }
 }
