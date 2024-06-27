@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  z-index: 1000;
 }
 
 a {
@@ -166,6 +167,7 @@ button {
   }
 
   .header-desktop {
+    max-width: 1440px;
     display: block;
     width: 100%;
     height: 70px;
@@ -187,7 +189,7 @@ button {
     margin-right: 10px;
   }
 
-  .header-desktop .header-menu li:first-child img{
+  .header-desktop .header-menu li:first-child img {
     width: 50px;
     height: 50px;
   }

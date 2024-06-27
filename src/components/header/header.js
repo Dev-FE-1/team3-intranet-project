@@ -1,9 +1,11 @@
-import adminNotice from '../../pages/admin/notice/adminNotice.js';
-import absentRequest from '../../pages/admin/absent-request/absentRequest.js';
-import employeeList from '../../pages/admin/employee-list/employeeList.js';
+import adminNotice, {
+  adminNoticeCreate,
+} from "../../pages/admin/notice/adminNotice.js";
+import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
+import employeeList from "../../pages/admin/employee-list/employeeList.js";
 
 function app() {
-  const content = document.querySelector('#header');
+  const content = document.querySelector("#header");
   content.innerHTML = `<header class="header-mobile">
       <nav>
         <ul class="header-menu">
@@ -74,7 +76,7 @@ function app() {
       </nav>
     </header>
 
-    <div id="app"></div>
+    
 
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
@@ -111,37 +113,38 @@ function app() {
 }
 
 function workTimeButton() {
-  const openButtons = document.querySelectorAll('.header-time');
-  const startTimeModal = document.querySelector('.start-time-modal');
-  const endTimeModal = document.querySelector('.end-time-modal');
-  const startButton = startTimeModal.querySelector('.start');
-  const endButton = endTimeModal.querySelector('.end');
+  const openButtons = document.querySelectorAll(".header-time");
+  const startTimeModal = document.querySelector(".start-time-modal");
+  const endTimeModal = document.querySelector(".end-time-modal");
+  const startButton = startTimeModal.querySelector(".start");
+  const endButton = endTimeModal.querySelector(".end");
   // const closeButtonStart = startTimeModal.querySelector('.close');
   // const closeButtonEnd = endTimeModal.querySelector('.close');
-  const modalBackgroundStart = startTimeModal.querySelector('.modal-background');
-  const modalBackgroundEnd = endTimeModal.querySelector('.modal-background');
+  const modalBackgroundStart =
+    startTimeModal.querySelector(".modal-background");
+  const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
   let workStartTime;
   let workInterval;
 
   function toggleStartTimeModal() {
-    startTimeModal.classList.toggle('hidden');
+    startTimeModal.classList.toggle("hidden");
   }
 
   function toggleEndTimeModal() {
-    endTimeModal.classList.toggle('hidden');
+    endTimeModal.classList.toggle("hidden");
   }
 
   function startWork() {
     workStartTime = Date.now();
     workInterval = setInterval(updateWorkTime, 1000);
-    openButtons.forEach(button => button.textContent = '0시간 0분 0초');
+    openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
     toggleStartTimeModal();
   }
 
   function endWork() {
     clearInterval(workInterval);
-    openButtons.forEach(button => button.textContent = 'Working Hours');
+    openButtons.forEach((button) => (button.textContent = "Working Hours"));
     toggleEndTimeModal();
   }
 
@@ -150,13 +153,15 @@ function workTimeButton() {
     const elapsedTime = currentTime - workStartTime;
     const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
     const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
-    const second = Math.floor(((elapsedTime % (1000 * 60)) / 1000));
-    openButtons.forEach(button => button.textContent = `${hours}시간 ${minutes}분 ${second}초`);
+    const second = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+    openButtons.forEach(
+      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${second}초`)
+    );
   }
 
-  openButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      if (button.textContent === 'Working Hours') {
+  openButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.textContent === "Working Hours") {
         toggleStartTimeModal();
       } else {
         toggleEndTimeModal();
@@ -164,27 +169,36 @@ function workTimeButton() {
     });
   });
 
-  startButton.addEventListener('click', () => {
+  startButton.addEventListener("click", () => {
     startWork();
     toggleStartTimeModal();
   });
-  endButton.addEventListener('click', () => {
+  endButton.addEventListener("click", () => {
     endWork();
     toggleEndTimeModal();
   });
-  modalBackgroundStart.addEventListener('click', toggleStartTimeModal);
-  modalBackgroundEnd.addEventListener('click', toggleEndTimeModal);
+  modalBackgroundStart.addEventListener("click", toggleStartTimeModal);
+  modalBackgroundEnd.addEventListener("click", toggleEndTimeModal);
 }
 
-
 function navigatePage(event) {
-  const anchor = event.target.closest("a");
-  if (anchor && anchor.href) {
-    event.preventDefault();
-    const path = anchor.getAttribute("href");
-    history.pushState(null, null, path);
-    route();
+  event.preventDefault();
+  const anchor = event.target.closest("a, .add-button"); // add-button도 이벤트를 감지하도록 수정
+  if (anchor) {
+    const path = anchor.getAttribute("href") || anchor.dataset.path; // href나 data-path 속성을 가져옴
+    if (path) {
+      history.pushState(null, null, path);
+      route();
+    }
   }
+}
+
+function loadCSS(filename) {
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = filename;
+  document.head.appendChild(link);
 }
 
 function route() {
@@ -192,13 +206,18 @@ function route() {
 
   switch (path) {
     case "/employee-list":
-      employeeList('#app');
+      employeeList("#app");
       break;
     case "/notice":
-      adminNotice('#app');
+      adminNotice("#app");
+      loadCSS("../../src/pages/admin/admin-notice/adminNotice.css");
       break;
     case "/absent-request":
-      absentRequest('#app');
+      absentRequest("#app");
+      break;
+    case "/notice/noticeCreate": // 새로운 경로 추가
+      adminNoticeCreate("#app");
+      loadCSS("../../src/pages/admin/admin-notice/adminNoticeCreate.css");
       break;
   }
 }

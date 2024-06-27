@@ -1,7 +1,5 @@
-import './style.css'
+import "./style.css";
 
-async function app() {
-  
-}
+async function app() {}
 
-document.addEventListener('DOMContentLoaded', app);
+document.addEventListener("DOMContentLoaded", app);
