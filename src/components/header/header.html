@@ -63,6 +63,14 @@
       <nav>
         <ul class="header-menu">
           <li>
+            <a href="/">
+              <img
+                src="../../../public/images/header/favicon.ico"
+                alt="oasis"
+              />
+            </a>
+          </li>
+          <li>
             <a href="/employee-list">임직원 리스트</a>
           </li>
           <li>
@@ -74,12 +82,12 @@
         </ul>
         <ul class="header-profile">
           <li>
-            <button class="header-time">Working Hours : 7시간 27분</button>
+            <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
             <img
               src="../../../public/images/header/header-profile.jpg"
-              alt=""
+              alt="my-profile"
             />
           </li>
         </ul>
@@ -87,6 +95,30 @@
     </header>
 
     <div id="app"></div>
+
+    <!-- Working Hours Modal -->
+    <div class="start-time-modal hidden">
+      <div class="modal-background">
+        <div class="modal-content">
+          <p>근무를 시작하시겠습니까?</p>
+          <div class="time-button">
+            <button class="start">Yes</button>
+            <button class="close">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="end-time-modal hidden">
+      <div class="modal-background">
+        <div class="modal-content">
+          <p>근무를 종료하시겠습니까?</p>
+          <div class="time-button">
+            <button class="end">Yes</button>
+            <button class="close">No</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="header.js" type="module"></script>
   </body>
