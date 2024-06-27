@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import header from './components/header/header.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const signupLink = document.getElementById('signup-link');
@@ -39,13 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
         console.log(userCredential);
-        const user = userCredential.user;
+        // const user = userCredential.user;
         // ...
       })
       .catch((error) => {
         console.log('error');
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
         // ..
       });
     });
@@ -56,18 +57,22 @@ document.addEventListener('DOMContentLoaded', function () {
       const loginEmail = document.querySelector('.login-email').value;
       const loginPassword = document.querySelector('.login-password').value;
       signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-        .then((userCredential) => {
-          // Signed in 
-          console.log(userCredential);
-          const user = userCredential.user;
-          // ...
-        })
-        .catch((error) => {
-          console.log('로그인 실패');
-          const errorCode = error.code;
-          const errorMessage = error.message;
-        });
+      .then((userCredential) => {
+        // 로그인 성공
+        console.log('로그인 성공', userCredential);
+        const user = userCredential.user;
+        if (user.email === "admin@gmail.com") {
+          document.getElementById('login').style.display = 'none';
+          header();
+        }
+      })
+      .catch((error) => {
+        // 로그인 실패
+        console.log('로그인 실패');
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
       });
+    });
 
   signupLink.addEventListener('click', function (event) {
     event.preventDefault();

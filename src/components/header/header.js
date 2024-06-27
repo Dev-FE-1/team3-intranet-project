@@ -1,10 +1,8 @@
-import adminNotice, {
-  adminNoticeCreate,
-} from "../../pages/admin/notice/adminNotice.js";
+import adminNotice, {adminNoticeCreate,} from "../../pages/admin/notice/adminNotice.js";
 import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
 
-function app() {
+export default function app() {
   const content = document.querySelector("#header");
   content.innerHTML = `<header class="header-mobile">
       <nav>
