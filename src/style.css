@@ -25,3 +25,161 @@ body {
   justify-content: center;
   z-index: 0;
 }
+
+a {
+  color: rgb(36, 36, 255);
+  text-decoration: none;
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-wrap {
+  width: 80%;
+  background-color: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.login-title {
+  text-align: center;
+}
+
+.login-title h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form input,
+.signup-form input {
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+  border-color: #E1E7EF;
+}
+
+.login-form button,
+.signup-form button {
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.login-form button:hover,
+.signup-form button:hover {
+  background-color: #E1E7EF;
+}
+
+.login-form button:active,
+.signup-form button:active {
+  font-weight: 700;
+}
+
+.signup-form {
+  display: none;
+}
+
+.signup-detail {
+  display: none;
+}
+
+/*  ≧ 768px (Desktop) */
+@media screen and (min-width: 768px) {
+  .login-wrap {
+    width: 80%;
+    background-color: white;
+    margin: 20px;
+    padding: 50px;
+    border-radius: 20px;
+  }
+  
+  .login-title {
+    text-align: center;
+  }
+  
+  .login-title h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+  
+  .login-form input,
+  .signup-form input {
+    width: 50%;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 10px 15px;
+  }
+  
+  .login-form input:focus,
+  .signup-form input:focus {
+    border-color: #E1E7EF;
+  }
+  
+  .login-form button,
+  .signup-form button {
+    margin-top: 10px;
+    font-size: 16px;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+  }
+  
+  .login-form button:hover,
+  .signup-form button:hover {
+    background-color: #E1E7EF;
+  }
+  
+  .login-form button:active,
+  .signup-form button:active {
+    font-weight: 700;
+  }
+  
+  .signup-form {
+    display: none;
+  }
+  
+  .signup-detail {
+    display: none;
+  }
+}
