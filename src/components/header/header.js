@@ -10,7 +10,7 @@ function app() {
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
+            <a data-back>
               <img src="public/images/header/back.svg" alt="back-button"/>
             </a>
           </li>
@@ -183,10 +183,14 @@ function navigatePage(event) {
   event.preventDefault();
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    const path = anchor.getAttribute("href") || anchor.dataset.path;
-    if (path) {
-      history.pushState(null, null, path);
-      route();
+    if (anchor.hasAttribute('data-back')) {
+      history.back();
+    } else {
+      const path = anchor.getAttribute("href") || anchor.dataset.path;
+      if (path) {
+        history.pushState(null, null, path);
+        route();
+      }
     }
   }
 }
