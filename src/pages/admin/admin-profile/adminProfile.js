@@ -1,21 +1,12 @@
-// function app(){
-//   const btnEdit=document.querySelector(".btn-edit");
-//   // const btnBack=document.querySelector(".btn-back");
-
-//   btnEdit.addEventListener("click", toEditPage);
-//   // btnBack.addEventListener("click", history.back());
-
-//   function toEditPage(){
-//     window.location.href="admin-profile-mod.html";
-//   }
-// }
-// document.addEventListener("DOMContentLoaded",app);
+import "./admin-profile-doc.css";
+import "./admin-profile-mod.css";
+import { route } from "../../../components/header/header.js";
 export default function adminProfile(container) {
     const content = document.querySelector(container);
     content.innerHTML = `<div class="container">
     <div class="card">
       <div class="proflie-header semi-bold">
-        <img src="/public/images/profile/Vector 9.png" alt="back" class="btn-back">
+        <img src="/public/images/profile/Vector 9.png" alt="back" id="backImg" data-path="/">
         <p>Profile</p>
       </div>
       <div class="profile">
@@ -44,6 +35,18 @@ export default function adminProfile(container) {
     </div>
   </div>`;
 
+  //헤더 백 버튼
+  const backStep=document.querySelector('#backImg');
+  backStep.addEventListener('click',(event)=>{
+    event.preventDefault();
+
+    const path=backStep.dataset.path;
+    if(path){
+      history.pushState(null,null,path);
+      route();
+    }
+  });
+
   const editButton=document.querySelector(".btn-edit");
   editButton.addEventListener('click',(event)=>{
     event.preventDefault();
@@ -54,23 +57,7 @@ export default function adminProfile(container) {
       route();
     }
   });
-}
-function loadCSS(filename) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  // link.type = "text/css";
-  link.href = filename;
-  document.head.appendChild(link);
-}
 
-function route(){
-  const path=location.pathname;
-  switch(path){
-    case "/profile/profileModify":
-      adminProfileModify('#app');
-      loadCSS("../../src/pages/admin/admin-profile/admin-profile-mod.css");
-      break;
-  }
 }
 
 export function adminProfileModify(container){
@@ -79,7 +66,7 @@ export function adminProfileModify(container){
     <div class="container">
     <div class="card">
       <div class="proflie-header semi-bold">
-        <img src="/public/images/profile/Vector 9.png" alt="back">
+        <img src="/public/images/profile/Vector 9.png" alt="back" id="backImg" data-path="/profile">
         <p>Profile</p>
       </div>
       <div class="profile">
@@ -111,4 +98,15 @@ export function adminProfileModify(container){
     </div>
   </div>
   `;
+
+  //헤더 백 버튼
+  const backStep=document.querySelector('#backImg');
+  backStep.addEventListener('click',(event)=>{
+    event.preventDefault();
+    const path=backStep.dataset.path;
+    if(path){
+      history.pushState(null,null,path);
+      route();
+    }
+  });
 }

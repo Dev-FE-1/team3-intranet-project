@@ -4,6 +4,7 @@ import employeeList from "../../pages/admin/employee-list/employeeList.js";
 import adminProfile,{ adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
 import userMainPage from '../../pages/user/user.js';
 
+
 function app() {
   const content = document.querySelector("#header");
   content.innerHTML = `<header class="header-mobile">
@@ -195,15 +196,7 @@ function navigatePage(event) {
   }
 }
 
-function loadCSS(filename) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  link.href = filename;
-  document.head.appendChild(link);
-}
-
-function route() {
+export function route() {
   const path = location.pathname;
   if(document.querySelector('#header').style.display='none'){
     document.querySelector('#header').style.display='block';
@@ -218,23 +211,19 @@ function route() {
       break;
     case "/notice":
       adminNotice("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNotice.css");
       break;
     case "/absent-request":
       absentRequest("#app");
       break;
     case "/notice/noticeCreate":
       adminNoticeCreate("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNoticeCreate.css");
       break;
     case "/profile":
       adminProfile('#app');
-      loadCSS("../../src/pages/admin/admin-profile/admin-profile-doc.css");
       document.querySelector('#header').style.display='none';
       break;
     case "/profile/profileModify":
       adminProfileModify('#app');
-      loadCSS("../../src/pages/admin/admin-profile/admin-profile-mod.css");
       document.querySelector('#header').style.display='none';
       break;
   }
