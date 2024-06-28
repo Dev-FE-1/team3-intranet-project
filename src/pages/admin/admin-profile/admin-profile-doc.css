@@ -188,7 +188,7 @@ body{
   left:0;
   cursor:pointer;
   margin:10px auto;
-  bottom:-10vh;
+  bottom:-8vh;
 }
 .btn-edit:hover{
   background-color: #4D596B;
@@ -231,20 +231,14 @@ body{
     height:75%;
   }
 
-  .frame label:last-child{
+  /* .frame label:nth-child(2){
     margin-right:40%;
-  }
+  } */
   .frame label > img{
     object-fit: contain;
     width:162px;
     height:162px;
     transform: translate(-130%,-50%);
-  }
-  .frame span#name{
-    /* margin-right:10%; */
-    font-size:24px;
-    height:36px;
-    line-height: 36px;
   }
 
   .data .frame-bottom > label{
@@ -256,6 +250,10 @@ body{
     display:flex;
     justify-content:space-between;
     align-items: center;
+  }
+  
+  .frame label:last-child{
+    margin-right:30%;
   }
 
   /* data label input */
@@ -272,9 +270,11 @@ body{
     height:34px;
     font-size:18px;
   }
-  .data .frame label input#name{
-    height:34px;
-    font-size:18px;
+  .data .frame label span#name{
+    height:36px;
+    line-height: 36px;
+    font-size:24px;
+    /* margin-left:40%; */
   }
   .btn-edit{
     width:434px;

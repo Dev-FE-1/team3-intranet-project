@@ -185,7 +185,7 @@ body{
   left:0;
   cursor:pointer;
   margin:10px auto;
-  bottom:-10vh;
+  bottom:-8vh;
 }
 .btn-submit:hover{
   background-color: #4D596B;
@@ -243,11 +243,8 @@ body{
     justify-content:space-between;
     align-items: center;
   }
-  .frame input#name{
-    margin-left:10%;
-    font-size:24px;
-    height:36px;
-    line-height: 36px;
+  .frame label:last-child{
+    margin-right:30%;
   }
 
   /* .data{
@@ -270,8 +267,10 @@ body{
     font-size:18px;
   }
   .data .frame label input#name{
-    height:34px;
-    font-size:18px;
+    /* margin-left:10%; */
+    font-size:24px;
+    height:36px;
+    line-height: 36px;
   }
   .btn-submit{
     width:434px;
