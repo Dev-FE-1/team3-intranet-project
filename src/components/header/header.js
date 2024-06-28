@@ -1,7 +1,7 @@
 import adminNotice, { adminNoticeCreate, } from "../../pages/admin/notice/adminNotice.js";
 import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import adminProfile from '../../pages/admin/admin-profile/adminProfile.js';
+import adminProfile,{ adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
 import userMainPage from '../../pages/user/user.js';
 
 function app() {
@@ -184,11 +184,11 @@ function navigatePage(event) {
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
     if (anchor.hasAttribute('data-back')) {
-      history.back();
+      history.back();   
     } else {
       const path = anchor.getAttribute("href") || anchor.dataset.path;
       if (path) {
-        history.pushState(null, null, path);
+        history.pushState(null, null, path);       
         route();
       }
     }
@@ -205,7 +205,10 @@ function loadCSS(filename) {
 
 function route() {
   const path = location.pathname;
-
+  if(document.querySelector('#header').style.display='none'){
+    document.querySelector('#header').style.display='block';
+  }
+  
   switch (path) {
     case "/":
       userMainPage('#app')
@@ -226,6 +229,13 @@ function route() {
       break;
     case "/profile":
       adminProfile('#app');
+      loadCSS("../../src/pages/admin/admin-profile/admin-profile-doc.css");
+      document.querySelector('#header').style.display='none';
+      break;
+    case "/profile/profileModify":
+      adminProfileModify('#app');
+      loadCSS("../../src/pages/admin/admin-profile/admin-profile-mod.css");
+      document.querySelector('#header').style.display='none';
       break;
   }
 }
