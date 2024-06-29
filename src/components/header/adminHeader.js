@@ -1,8 +1,8 @@
 import adminNotice, { adminNoticeCreate, } from "../../pages/admin/notice/adminNotice.js";
-import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
+import adminAbsentRequest from '../../pages/admin/absent-request/adminAbsentRequest.js';
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
 import adminProfile,{ adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
-import userMainPage from '../../pages/user/user.js';
+import adminMainPage from '../../pages/admin/admin.js';
 
 
 export default function app() {
@@ -22,12 +22,12 @@ export default function app() {
             </a>
           </li>
           <li>
-            <a href="/notice">
+            <a href="/admin-notice">
               <img src="public/images/header/notice.svg" alt="notice"/>
             </a>
           </li>
           <li>
-            <a href="/absent-request">
+            <a href="/admin-absent-request">
               <img src="public/images/header/absent-request.svg" alt="absent-request"/>
             </a>
           </li>
@@ -57,10 +57,10 @@ export default function app() {
             <a href="/employee-list">임직원 리스트</a>
           </li>
           <li>
-            <a href="/notice">공지사항</a>
+            <a href="/admin-notice">공지사항</a>
           </li>
           <li>
-            <a href="/absent-request">부재신청</a>
+            <a href="/admin-absent-request">부재신청</a>
           </li>
         </ul>
         <ul class="header-profile">
@@ -68,7 +68,7 @@ export default function app() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <a href="/profile">
+            <a href="/admin-profile">
               <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
             </a>
           </li>
@@ -205,25 +205,25 @@ export function route() {
   
   switch (path) {
     case "/":
-      userMainPage('#app')
+      adminMainPage('#app')
       break;
     case "/employee-list":
       employeeList("#app");
       break;
-    case "/notice":
+    case "/admin-notice":
       adminNotice("#app");
       break;
-    case "/absent-request":
-      absentRequest("#app");
+    case "/admin-absent-request":
+      adminAbsentRequest("#app");
       break;
-    case "/notice/noticeCreate":
+    case "/admin-notice/noticeCreate":
       adminNoticeCreate("#app");
       break;
-    case "/profile":
+    case "/admin-profile":
       adminProfile('#app');
       document.querySelector('#header').style.display='none';
       break;
-    case "/profile/profileModify":
+    case "/admin-profile/profileModify":
       adminProfileModify('#app');
       document.querySelector('#header').style.display='none';
       break;

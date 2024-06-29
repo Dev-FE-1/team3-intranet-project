@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import header from './components/header/header.js';
+import adminHeader from './components/header/adminHeader.js';
 import userHeader from './components/header/userHeader.js';
 
 
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const loginBtn = document.querySelector('.login-btn');
 
   // 헤더
-  document.querySelector('#header').style.display = 'none';
+  // document.querySelector('#header').style.display = 'none';
 
 
   const firebaseConfig = {
@@ -67,7 +67,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const user = userCredential.user;
         if (user.email === "admin@gmail.com") {
           document.querySelector('.login-container').style.display = 'none';
-          header();
+          adminHeader();
+        } else {
+          document.querySelector('.login-container').style.display = 'none';
+          userHeader();
         }
       })
       .catch((error) => {

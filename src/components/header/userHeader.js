@@ -1,6 +1,9 @@
-import adminNotice, {adminNoticeCreate,} from "../../pages/admin/notice/adminNotice.js";
-import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
-import employeeList from "../../pages/admin/employee-list/employeeList.js";
+import userMainPage from '../../pages/user/user.js';
+import userProfile from '../../pages/user/user-profile/userProfile.js';
+import userNotice from '../../pages/user/user-notice/userNotice.js';
+import userAbsentRequest from '../../pages/user/user-absent-request/userAbsentRequest.js';
+
+
 
 export default function app() {
   const content = document.querySelector("#header");
@@ -9,27 +12,18 @@ export default function app() {
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
-              <img
-                src="../../../public/images/header/back.svg"
-                alt="back-button"
-              />
+            <a data-back>
+              <img src="public/images/header/back.svg" alt="back-button"/>
             </a>
           </li>
           <li>
             <a href="/notice">
-              <img
-                src="../../../public/images/header/notice.svg"
-                alt="notice"
-              />
+              <img src="public/images/header/notice.svg" alt="notice"/>
             </a>
           </li>
           <li>
             <a href="/absent-request">
-              <img
-                src="../../../public/images/header/absent-request.svg"
-                alt="absent-request"
-              />
+              <img src="public/images/header/absent-request.svg" alt="absent-request"/>
             </a>
           </li>
         </ul>
@@ -38,10 +32,9 @@ export default function app() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <img
-              src="../../../public/images/header/header-profile.jpg"
-              alt="my-profile"
-            />
+            <a href="/my-profile">
+              <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
+            </a>
           </li>
         </ul>
       </nav>
@@ -52,10 +45,7 @@ export default function app() {
         <ul class="header-menu">
           <li>
             <a href="/">
-              <img
-                src="../../../public/images/header/favicon.ico"
-                alt="oasis"
-              />
+              <img src="public/images/header/favicon.ico" alt="oasis"/>
             </a>
           </li>
           <li>
@@ -70,16 +60,15 @@ export default function app() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <img
-              src="../../../public/images/header/header-profile.jpg"
-              alt="my-profile"
-            />
+            <a href="/my-profile">
+              <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
+            </a>
           </li>
         </ul>
       </nav>
     </header>
 
-    <div id="app"></div>
+    
 
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
@@ -188,29 +177,37 @@ function navigatePage(event) {
   event.preventDefault();
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    const path = anchor.getAttribute("href") || anchor.dataset.path; 
-    if (path) {
-      history.pushState(null, null, path);
-      route();
+    if (anchor.hasAttribute('data-back')) {
+      history.back();   
+    } else {
+      const path = anchor.getAttribute("href") || anchor.dataset.path;
+      if (path) {
+        history.pushState(null, null, path);       
+        route();
+      }
     }
   }
 }
 
-function route() {
+export function route() {
   const path = location.pathname;
-
+  if(document.querySelector('#header').style.display='none') {
+    document.querySelector('#header').style.display='block';
+  }
+  
   switch (path) {
-    case "/employee-list":
-      employeeList("#app");
+    case "/":
+      userMainPage('#app')
       break;
     case "/notice":
-      adminNotice("#app");
+      userNotice("#app");
       break;
     case "/absent-request":
-      absentRequest("#app");
+      userAbsentRequest("#app");
       break;
-    case "/notice/noticeCreate": // 새로운 경로 추가
-      adminNoticeCreate("#app");
+    case "/my-profile":
+      userProfile('#app');
+      document.querySelector('#header').style.display='none';
       break;
   }
 }
