@@ -1,10 +1,10 @@
 import adminNotice, {
   adminNoticeCreate,
+  adminNoticeContent,
 } from "../../pages/admin/notice/adminNotice.js";
 import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import "../../pages/admin/admin-notice/adminNotice.css";
-import "../../pages/admin/admin-notice/adminNoticeCreate.css";
+import "../header/header.css";
 
 function app() {
   const content = document.querySelector("#header");
@@ -185,7 +185,7 @@ function workTimeButton() {
 
 function navigatePage(event) {
   event.preventDefault();
-  const anchor = event.target.closest("a, .add-button");
+  const anchor = event.target.closest("a, .add-button, .board");
   if (anchor) {
     const path = anchor.getAttribute("href") || anchor.dataset.path;
     if (path) {
@@ -195,7 +195,7 @@ function navigatePage(event) {
   }
 }
 
-function route() {
+export function route() {
   const path = location.pathname;
 
   switch (path) {
@@ -210,6 +210,9 @@ function route() {
       break;
     case "/notice/noticeCreate":
       adminNoticeCreate("#app");
+      break;
+    case "/notice/noticeContent":
+      adminNoticeContent("#app");
       break;
   }
 }

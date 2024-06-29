@@ -1,0 +1,244 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 700px;
+  min-height: 600px;
+  overflow-y: scroll;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  height: 100%;
+  background-color: #e1e7ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  min-width: 700px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userMain-top {
+  display: flex;
+
+  width: 100%;
+  height: 34%;
+  justify-content: center;
+  gap: 6%;
+  margin: 30px 0;
+}
+
+.userMain-profile {
+  width: 40%;
+  height: 100%;
+  min-height: 220px;
+  min-width: 300px;
+}
+
+.userMain-profile-title {
+  width: 100%;
+  height: auto;
+  font-size: 28px;
+  margin-bottom: 1%;
+}
+
+.userMain-profile-content {
+  width: 100%;
+  height: 84%;
+  background-color: #f0f0f1;
+  border-radius: 10px;
+  position: relative;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 200px;
+}
+
+.userMain-profile-name {
+  font-size: 28px;
+  margin: 5px 0px;
+}
+
+.userMain-profile-content > img {
+  width: 30%;
+  height: 70%;
+  position: absolute;
+  top: 5%;
+  right: 2%;
+}
+
+.userMain-absent {
+  width: 40%;
+  height: 100%;
+  min-height: 220px;
+  min-width: 300px;
+}
+
+.userMain-absent-title {
+  width: 100%;
+  height: auto;
+  font-size: 28px;
+  margin-bottom: 1%;
+}
+
+.userMain-absent-content {
+  width: 100%;
+  height: 84%;
+  background-color: #f0f0f1;
+  border-radius: 10px;
+  min-height: 200px;
+}
+
+.userMain-bottom {
+  width: 100%;
+  height: 54%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.userMain-notice {
+  width: 86%;
+  min-width: 640px;
+}
+
+.userMain-notice-title {
+  width: 100%;
+  height: auto;
+  font-size: 28px;
+  margin-bottom: 0.6%;
+}
+
+.userMain-notice-content {
+  width: 100%;
+  height: 90%;
+  background-color: #f0f0f1;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.userMain-notice-smallcontent {
+  background-color: red;
+  height: 190px;
+}
+
+@media (max-width: 768px) {
+  body {
+    min-width: 100%;
+    min-height: 100vh;
+    overflow-y: scroll;
+  }
+
+  .container {
+    max-width: 768px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    min-width: 100%;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    gap: 2%;
+  }
+
+  .userMain-top {
+    flex-direction: column;
+    height: 60%;
+    margin: 0;
+    justify-content: center;
+    gap: 2%;
+  }
+
+  .userMain-profile,
+  .userMain-absent {
+    width: 100%;
+    height: 50%;
+    min-height: 80px;
+  }
+  .userMain-profile-title {
+    height: 16%;
+  }
+  .userMain-profile-content {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .userMain-absent-title {
+    height: 16%;
+  }
+  .userMain-absent-content {
+    min-height: 0;
+  }
+
+  .userMain-bottom {
+    flex-direction: column;
+
+    height: 40%;
+    margin: 0;
+  }
+
+  .userMain-notice {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+  }
+
+  .userMain-notice-title {
+    height: 12%;
+  }
+
+  .userMain-notice-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    height: 88%;
+  }
+
+  .userMain-notice-smallcontent {
+    height: auto;
+    background-color: red;
+    flex: 1;
+  }
+}
