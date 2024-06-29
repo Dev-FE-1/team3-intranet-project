@@ -5,11 +5,9 @@ import header from './components/header/header.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   const signupLink = document.getElementById('signup-link');
+  const loginForm = document.querySelector('.login');
+  const signupForm = document.querySelector('.signup');
   const loginLink = document.getElementById('login-link');
-  const loginForm = document.getElementById('login-form');
-  const signupForm = document.getElementById('signup-form');
-  const signupDetail = document.querySelector('.signup-detail');
-  const loginDetail = document.querySelector('.login-detail');
   const signupBtn = document.querySelector('.signup-btn');
   const loginBtn = document.querySelector('.login-btn');
 
@@ -29,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const analytics = getAnalytics(app);
   const auth = getAuth();
 
-  // SignUp
+  // 회원가입
   signupBtn.addEventListener('click', (event) => {
     event.preventDefault();
     const userName = document.querySelector('.username').value;
@@ -51,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    // Login
+    // 로그인
     loginBtn.addEventListener('click', (event) => {
       event.preventDefault();
       const loginEmail = document.querySelector('.login-email').value;
@@ -62,8 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('로그인 성공', userCredential);
         const user = userCredential.user;
         if (user.email === "admin@gmail.com") {
-          document.getElementById('login').style.display = 'none';
-          header();
+          document.querySelector('.login-container').style.display = 'none';
         }
       })
       .catch((error) => {
@@ -78,16 +75,12 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     loginForm.style.display = 'none';
     signupForm.style.display = 'block';
-    loginDetail.style.display = 'none';
-    signupDetail.style.display = 'block';
   });
 
   loginLink.addEventListener('click', function (event) {
     event.preventDefault();
     signupForm.style.display = 'none';
     loginForm.style.display = 'block';
-    signupDetail.style.display = 'none';
-    loginDetail.style.display = 'block';
   });
 
     console.log(app);
