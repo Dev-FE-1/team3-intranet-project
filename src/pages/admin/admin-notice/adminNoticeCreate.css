@@ -11,7 +11,7 @@ body {
   align-items: center;
 }
 
-.container {
+.adminNoticeCreate-container {
   width: 100%;
   height: 100%;
   background-color: #e1e7ef;
@@ -21,19 +21,17 @@ body {
   align-items: center;
 }
 
-.header-zone {
+.adminNoticeCreate-header-zone {
   width: 100%;
 }
 
-
-
-.content-wrapper {
+.adminNoticeCreate-content-wrapper {
   width: 100%;
   height: 100%;
   padding: 20px;
 }
 
-.content {
+.adminNoticeCreate-content {
   width: 100%;
   height: 100%;
   background-color: white;
@@ -44,27 +42,28 @@ body {
   align-items: center;
 }
 
-.title-box {
+.adminNoticeCreate-title-box {
   width: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-bottom: 30px;
   margin-top: 40px;
 }
 
-.title-box input {
+.adminNoticeCreate-title-box input {
   margin-top: 10px;
   height: 25px;
   padding-left: 5px;
 }
 
-.description {
+.adminNoticeCreate-description {
   width: 80%;
   display: flex;
   flex-direction: column;
 }
 
-.description textarea {
+.adminNoticeCreate-description textarea {
   width: 100%;
   height: 28vh;
   resize: none;
@@ -72,27 +71,27 @@ body {
   padding: 5px;
 }
 
-.image-upload {
+.adminNoticeCreate-image-upload {
   display: flex;
   width: 80%;
   flex-direction: column;
   margin-top: 30px;
 }
 
-.image-upload-box {
+.adminNoticeCreate-image-upload-box {
   border: 1px solid #dcdcdc;
   width: 100%;
   height: 25px;
   margin-top: 10px;
 }
 
-.button-zone {
+.adminNoticeCreate-button-zone {
   margin-top: 40px;
   display: flex;
   justify-content: center;
 }
 
-.button-zone button {
+.adminNoticeCreate-button-zone button {
   color: white;
   border-radius: 5px;
   padding: 7px 15px;
@@ -101,13 +100,13 @@ body {
   cursor: pointer;
 }
 
-.button-zone #cancel {
+.adminNoticeCreate-button-zone #cancel {
   color: white;
   background-color: #e45d5d;
   border-radius: 5px;
 }
 
-.button-zone #submit {
+.adminNoticeCreate-button-zone #submit {
   color: white;
   background-color: #4b5b73;
   border-radius: 5px;
@@ -115,7 +114,7 @@ body {
 
 /* 768px 이상일 때의 반응형 스타일 */
 @media screen and (min-width: 768px) {
-  .container {
+  .adminNoticeCreate-container {
     max-width: 1440px;
     width: 100%;
     height: 100%;
@@ -125,11 +124,11 @@ body {
     justify-content: flex-start;
     align-items: center;
   }
-  
-  .header-zone {
+
+  .adminNoticeCreate-header-zone {
     width: 100%;
   }
-  
+
   header {
     background-color: red;
     height: 48px;
@@ -139,14 +138,14 @@ body {
     align-items: center;
     top: 0;
   }
-  
-  .content-wrapper {
+
+  .adminNoticeCreate-content-wrapper {
     width: 100%;
     height: 100%;
     padding: 30px;
   }
-  
-  .content {
+
+  .adminNoticeCreate-content {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -156,56 +155,56 @@ body {
     justify-content: space-around;
     align-items: center;
   }
-  
-  .title-box {
+
+  .adminNoticeCreate-title-box {
     width: 80%;
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
     margin-top: 40px;
   }
-  
-  .title-box input {
+
+  .adminNoticeCreate-title-box input {
     margin-top: 10px;
     height: 25px;
     padding-left: 5px;
   }
-  
-  .description {
+
+  .adminNoticeCreate-description {
     width: 80%;
     display: flex;
     flex-direction: column;
   }
-  
-  .description textarea {
+
+  .adminNoticeCreate-description textarea {
     width: 100%;
     height: 28vh;
     resize: none;
     margin-top: 10px;
     padding: 5px;
   }
-  
-  .image-upload {
+
+  .adminNoticeCreate-image-upload {
     display: flex;
     width: 80%;
     flex-direction: column;
     margin-top: 30px;
   }
-  
-  .image-upload-box {
+
+  .adminNoticeCreate-image-upload-box {
     border: 1px solid #dcdcdc;
     width: 100%;
     height: 25px;
     margin-top: 10px;
   }
-  
-  .button-zone {
+
+  .adminNoticeCreate-button-zone {
     margin-top: 40px;
     display: flex;
     justify-content: center;
   }
-  
-  .button-zone button {
+
+  .adminNoticeCreate-button-zone button {
     color: white;
     border-radius: 5px;
     padding: 7px 15px;
@@ -213,17 +212,16 @@ body {
     margin: 0 5px; /* 버튼 사이의 간격을 설정 */
     cursor: pointer;
   }
-  
-  .button-zone #cancel {
+
+  .adminNoticeCreate-button-zone #cancel {
     color: white;
     background-color: #e45d5d;
     border-radius: 5px;
   }
-  
-  .button-zone #submit {
+
+  .adminNoticeCreate-button-zone #submit {
     color: white;
     background-color: #4b5b73;
     border-radius: 5px;
   }
 }
-/* 

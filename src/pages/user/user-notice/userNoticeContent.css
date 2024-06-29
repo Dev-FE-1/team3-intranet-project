@@ -11,7 +11,7 @@ body {
   align-items: center;
 }
 
-.container {
+.userNoticeContent-container {
   width: 100%;
   height: 100%;
   background-color: #e1e7ef;
@@ -21,27 +21,17 @@ body {
   align-items: center;
 }
 
-.header-zone {
+.userNoticeContent-header-zone {
   width: 100%;
 }
 
-header {
-  background-color: red;
-  height: 48px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-}
-
-.content-wrapper {
+.userNoticeContent-content-wrapper {
   width: 100%;
   height: 100%;
   padding: 20px;
 }
 
-.content {
+.userNoticeContent-content {
   width: 100%;
   height: 100%;
   background-color: white;
@@ -53,7 +43,7 @@ header {
   padding: 0 30px;
 }
 
-.title-box {
+.userNoticeContent-title-box {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -62,18 +52,18 @@ header {
   padding-left: 10px;
 }
 
-.title-box #title {
+.userNoticeContent-title-box #title {
   margin-bottom: 10px;
 }
 
-.divider {
+.userNoticeContent-divider {
   width: 90%;
   border: none;
   border-top: 1px solid #efefef;
   margin: 2px auto;
 }
 
-.img-box {
+.userNoticeContent-img-box {
   width: 100%;
   height: 20vh;
   background-color: red;
@@ -81,13 +71,13 @@ header {
   /* min-height: 10vh; */
 }
 
-.description-box {
+.userNoticeContent-description-box {
   width: 100%;
   height: 36vh;
   background-color: gray;
 }
 
-.divider2 {
+.userNoticeContent-divider2 {
   width: 90%;
   border: none;
   border-top: 1px solid #efefef;
@@ -96,23 +86,22 @@ header {
 }
 
 @media (min-width: 768px) {
-  .container {
+  .userNoticeContent-container {
     width: 512px;
   }
 }
 
 @media screen and (min-width: 1440px) {
-  .container {
+  .userNoticeContent-container {
     width: 800px;
   }
 
-  .img-box {
+  .userNoticeContent-img-box {
     height: 20vh;
-
     /* min-height: 10vh; */
   }
 
-  .description-box {
+  .userNoticeContent-description-box {
     height: 36vh;
   }
 }
