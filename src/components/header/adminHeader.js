@@ -188,6 +188,7 @@ function navigatePage(event) {
     if (anchor.hasAttribute('data-back')) {
       history.back();   
     } else {
+      event.preventDefault();
       const path = anchor.getAttribute("href") || anchor.dataset.path;
       if (path) {
         history.pushState(null, null, path);       

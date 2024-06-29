@@ -26,6 +26,14 @@ body {
   z-index: 0;
 }
 
+#login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -36,8 +44,8 @@ input:focus,
 input:active,
 textarea:focus,
 textarea:active {
-    outline: none;
-    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .login-container {
@@ -48,7 +56,7 @@ textarea:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #E1E7EF;
+  background-color: #e1e7ef;
 }
 
 .login-wrap {
@@ -65,13 +73,13 @@ textarea:active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} 
+}
 
 #login-title h1,
 #signup-title h1 {
   font-size: 18px;
   margin-bottom: 5px;
-} 
+}
 
 #login-title p,
 #signup-title p {
@@ -97,7 +105,7 @@ form {
 
 .login-form input:focus,
 .signup-form input:focus {
-  border-color: #E1E7EF;
+  border-color: #e1e7ef;
 }
 
 .login-form button,
@@ -110,7 +118,7 @@ form {
 
 .login-form button:hover,
 .signup-form button:hover {
-  background-color: #E1E7EF;
+  background-color: #e1e7ef;
 }
 
 .login-form button:active,
@@ -145,14 +153,14 @@ form {
   #signup-title h1 {
     font-size: 30px;
     margin-bottom: 18px;
-  } 
+  }
 
   #login-title p,
   #signup-title p {
     font-size: 16px;
     margin-bottom: 30px;
   }
-  
+
   .login-form input,
   .signup-form input {
     width: 40%;
@@ -161,12 +169,12 @@ form {
     margin-bottom: 30px;
     padding: 10px 15px;
   }
-  
+
   .login-form input:focus,
   .signup-form input:focus {
-    border-color: #E1E7EF;
+    border-color: #e1e7ef;
   }
-  
+
   .login-form button,
   .signup-form button {
     margin-top: 10px;
@@ -175,12 +183,12 @@ form {
     padding: 10px 30px;
     border-radius: 20px;
   }
-  
+
   .login-form button:hover,
   .signup-form button:hover {
-    background-color: #E1E7EF;
+    background-color: #e1e7ef;
   }
-  
+
   .login-form button:active,
   .signup-form button:active {
     font-weight: 700;

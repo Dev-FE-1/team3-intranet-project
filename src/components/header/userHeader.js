@@ -191,8 +191,9 @@ function navigatePage(event) {
 
 export function route() {
   const path = location.pathname;
+
   if(document.querySelector('#header').style.display='none') {
-    document.querySelector('#header').style.display='block';
+    document.querySelector('#header').style.display='flex';
   }
   
   switch (path) {
