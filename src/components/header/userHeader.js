@@ -10,22 +10,26 @@ export default function app() {
         <ul class="header-menu">
           <li>
             <a href="/">
-              <img src="public/images/header/back.svg" alt="back-button"/>
-            </a>
-          </li>
-          <li>
-            <a href="/employee-list">
-              <img src="public/images/header/employee-list.svg" alt="employee-list"/>
+              <img
+                src="../../../public/images/header/back.svg"
+                alt="back-button"
+              />
             </a>
           </li>
           <li>
             <a href="/notice">
-              <img src="public/images/header/notice.svg" alt="notice"/>
+              <img
+                src="../../../public/images/header/notice.svg"
+                alt="notice"
+              />
             </a>
           </li>
           <li>
             <a href="/absent-request">
-              <img src="public/images/header/absent-request.svg" alt="absent-request"/>
+              <img
+                src="../../../public/images/header/absent-request.svg"
+                alt="absent-request"
+              />
             </a>
           </li>
         </ul>
@@ -35,7 +39,7 @@ export default function app() {
           </li>
           <li class="header-profile-image">
             <img
-              src="public/images/header/header-profile.jpg"
+              src="../../../public/images/header/header-profile.jpg"
               alt="my-profile"
             />
           </li>
@@ -48,11 +52,11 @@ export default function app() {
         <ul class="header-menu">
           <li>
             <a href="/">
-              <img src="public/images/header/favicon.ico" alt="oasis"/>
+              <img
+                src="../../../public/images/header/favicon.ico"
+                alt="oasis"
+              />
             </a>
-          </li>
-          <li>
-            <a href="/employee-list">임직원 리스트</a>
           </li>
           <li>
             <a href="/notice">공지사항</a>
@@ -67,7 +71,7 @@ export default function app() {
           </li>
           <li class="header-profile-image">
             <img
-              src="public/images/header/header-profile.jpg"
+              src="../../../public/images/header/header-profile.jpg"
               alt="my-profile"
             />
           </li>
@@ -75,7 +79,7 @@ export default function app() {
       </nav>
     </header>
 
-    
+    <div id="app"></div>
 
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
@@ -182,22 +186,14 @@ function workTimeButton() {
 
 function navigatePage(event) {
   event.preventDefault();
-  const anchor = event.target.closest("a, .add-button"); // add-button도 이벤트를 감지하도록 수정
+  const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    const path = anchor.getAttribute("href") || anchor.dataset.path; // href나 data-path 속성을 가져옴
+    const path = anchor.getAttribute("href") || anchor.dataset.path; 
     if (path) {
       history.pushState(null, null, path);
       route();
     }
   }
-}
-
-function loadCSS(filename) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  link.href = filename;
-  document.head.appendChild(link);
 }
 
 function route() {
@@ -209,14 +205,12 @@ function route() {
       break;
     case "/notice":
       adminNotice("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNotice.css");
       break;
     case "/absent-request":
       absentRequest("#app");
       break;
     case "/notice/noticeCreate": // 새로운 경로 추가
       adminNoticeCreate("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNoticeCreate.css");
       break;
   }
 }

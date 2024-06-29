@@ -2,14 +2,20 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import header from './components/header/header.js';
+import userHeader from './components/header/userHeader.js';
+
 
 document.addEventListener('DOMContentLoaded', function () {
+  // 로그인,회원가입 기능
   const signupLink = document.getElementById('signup-link');
   const loginForm = document.querySelector('.login');
   const signupForm = document.querySelector('.signup');
   const loginLink = document.getElementById('login-link');
   const signupBtn = document.querySelector('.signup-btn');
   const loginBtn = document.querySelector('.login-btn');
+
+  // 헤더
+  document.querySelector('#header').style.display = 'none';
 
 
   const firebaseConfig = {
@@ -37,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
-        console.log(userCredential);
+        console.log('회원가입 성공', userCredential);
         // const user = userCredential.user;
         // ...
       })
@@ -61,10 +67,12 @@ document.addEventListener('DOMContentLoaded', function () {
         const user = userCredential.user;
         if (user.email === "admin@gmail.com") {
           document.querySelector('.login-container').style.display = 'none';
+          header();
         }
       })
       .catch((error) => {
         // 로그인 실패
+        alert('아이디와 비밀번호를 다시 확인해주세요.')
         console.log('로그인 실패');
         // const errorCode = error.code;
         // const errorMessage = error.message;
