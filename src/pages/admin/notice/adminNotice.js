@@ -1,4 +1,4 @@
-import { route } from "../../../components/header/header.js";
+import { route } from "../../../components/header/adminHeader.js";
 import "../../admin/admin-notice/adminNotice.css";
 import "../../admin/admin-notice/adminNoticeCreate.css";
 import "../../admin/admin-notice/adminNoticeContent.css";
