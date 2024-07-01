@@ -1,11 +1,16 @@
-import adminNotice, { adminNoticeCreate, } from "../../pages/admin/notice/adminNotice.js";
-import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
+import adminNotice, {
+  adminNoticeCreate,
+} from "../../pages/admin/notice/adminNotice.js";
+import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import adminProfile,{ adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
-import userMainPage from '../../pages/user/user.js';
+import adminProfile, {
+  adminProfileModify,
+} from "../../pages/admin/admin-profile/adminProfile.js";
+import adminMainPage from "../../pages/admin/admin.js";
+// import { showMainContent } from '../../main.js';
+import './header.css'
 
-
-function app() {
+export default function adminHeader() {
   const content = document.querySelector("#header");
   content.innerHTML = `<header class="header-mobile">
       <nav>
@@ -21,12 +26,12 @@ function app() {
             </a>
           </li>
           <li>
-            <a href="/notice">
+            <a href="/admin-notice">
               <img src="public/images/header/notice.svg" alt="notice"/>
             </a>
           </li>
           <li>
-            <a href="/absent-request">
+            <a href="/admin-absent-request">
               <img src="public/images/header/absent-request.svg" alt="absent-request"/>
             </a>
           </li>
@@ -48,7 +53,7 @@ function app() {
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
+            <a href="/admin">
               <img src="public/images/header/favicon.ico" alt="oasis"/>
             </a>
           </li>
@@ -56,10 +61,10 @@ function app() {
             <a href="/employee-list">임직원 리스트</a>
           </li>
           <li>
-            <a href="/notice">공지사항</a>
+            <a href="/admin-notice">공지사항</a>
           </li>
           <li>
-            <a href="/absent-request">부재신청</a>
+            <a href="/admin-absent-request">부재신청</a>
           </li>
         </ul>
         <ul class="header-profile">
@@ -67,7 +72,7 @@ function app() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <a href="/profile">
+            <a href="/admin-profile">
               <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
             </a>
           </li>
@@ -184,12 +189,12 @@ function navigatePage(event) {
   event.preventDefault();
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    if (anchor.hasAttribute('data-back')) {
-      history.back();   
+    if (anchor.hasAttribute("data-back")) {
+      history.back();
     } else {
       const path = anchor.getAttribute("href") || anchor.dataset.path;
       if (path) {
-        history.pushState(null, null, path);       
+        history.pushState(null, null, path);
         route();
       }
     }
@@ -198,35 +203,32 @@ function navigatePage(event) {
 
 export function route() {
   const path = location.pathname;
-  if(document.querySelector('#header').style.display='none'){
-    document.querySelector('#header').style.display='block';
-  }
-  
+
   switch (path) {
-    case "/":
-      userMainPage('#app')
+    case "/admin":
+      adminMainPage("#content");
       break;
     case "/employee-list":
-      employeeList("#app");
+      employeeList("#content");
       break;
-    case "/notice":
-      adminNotice("#app");
+    case "/admin-notice":
+      adminNotice("#content");
       break;
-    case "/absent-request":
-      absentRequest("#app");
+    case "/admin-absent-request":
+      adminAbsentRequest("#content");
       break;
-    case "/notice/noticeCreate":
-      adminNoticeCreate("#app");
+    case "/admin-notice/noticeCreate":
+      adminNoticeCreate("#content");
       break;
-    case "/profile":
-      adminProfile('#app');
-      document.querySelector('#header').style.display='none';
+    case "/admin-profile":
+      adminProfile("#content");
+      document.querySelector("#header").style.display = "none";
       break;
-    case "/profile/profileModify":
-      adminProfileModify('#app');
-      document.querySelector('#header').style.display='none';
+    case "/admin-profile/profileModify":
+      adminProfileModify("#content");
+      document.querySelector("#header").style.display = "none";
       break;
   }
 }
 
-document.addEventListener("DOMContentLoaded", app);
+document.addEventListener("DOMContentLoaded", adminHeader);

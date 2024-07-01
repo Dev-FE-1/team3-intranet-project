@@ -1,6 +1,6 @@
 import "./admin-profile-doc.css";
 import "./admin-profile-mod.css";
-import { route } from "../../../components/header/header.js";
+import { route } from "../../../components/header/adminHeader.js";
 export default function adminProfile(container) {
     const content = document.querySelector(container);
     content.innerHTML = `<div class="container">

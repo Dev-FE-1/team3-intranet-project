@@ -8,6 +8,19 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: "Nanum Gothic"
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#login {
+  display: flex;
+  justify-content: center;
 }
 
 #header {
@@ -18,10 +31,243 @@ body {
   align-items: center;
 }
 
-#app {
+#content {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   z-index: 0;
+}
+
+
+/* Login */
+a {
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: "Nanum Gothic"
+}
+
+button:focus,
+button:active,
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+  outline: none;
+  box-shadow: none;
+}
+
+.login-container {
+  max-width: 1440px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #e1e7ef;
+}
+
+.login-wrap {
+  width: 80%;
+  margin: 20px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 20px;
+}
+
+#login-title,
+#signup-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-title h1,
+#signup-title h1 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#login-title p,
+#signup-title p {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form input,
+.signup-form input {
+  width: 80%;
+  height: 40px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px
+}
+
+/* Chrome/Opera/Safari */
+.login-email::-webkit-input-placeholder,
+.signup-email::-webkit-input-placeholder {
+  font-size: 12px;
+  background-image: url('../public/images/login/mail.svg') ;
+  background-size: contain;
+  background-position:  1px center;
+  background-repeat: no-repeat;
+  text-indent: 20px;
+}
+
+.login-password::-webkit-input-placeholder,
+.signup-password::-webkit-input-placeholder {
+  font-size: 12px;
+  background-image: url('../public/images/login/key.svg') ;
+  background-size: contain;
+  background-position:  1px center;
+  background-repeat: no-repeat;
+  text-indent: 20px;
+}
+
+.username::-webkit-input-placeholder {
+  font-size: 12px;
+  background-image: url('../public/images/login/name.svg') ;
+  background-size: contain;
+  background-position:  1px center;
+  background-repeat: no-repeat;
+  text-indent: 20px;
+}
+
+.login-form input:focus,
+.signup-form input:focus {
+  border-color: #e1e7ef;
+}
+
+.login-form button,
+.signup-form button {
+  height: 40px;
+  width: 80%;
+  border: none;
+  border-radius: 10px;
+}
+
+.login-form button:hover,
+.signup-form button:hover {
+  background-color: #e1e7ef;
+}
+
+.login-form button:active,
+.signup-form button:active {
+  font-weight: 700;
+}
+
+#signup-link,
+#login-link {
+  color: blue;
+}
+
+#signup-link:hover,
+#login-link:hover {
+  text-decoration: underline;
+}
+
+.signup {
+  display: none;
+}
+
+/*  ≧ 768px (Desktop) */
+@media screen and (min-width: 768px) {
+  .login-wrap {
+    width: 60%;
+    background-color: white;
+    padding: 100px 0;
+    border-radius: 20px;
+  }
+
+  #login-title h1,
+  #signup-title h1 {
+    font-size: 30px;
+    margin-bottom: 18px;
+  }
+
+  #login-title p,
+  #signup-title p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  .login-form input,
+  .signup-form input {
+    width: 40%;
+    height: 50px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 10px 15px;
+  }
+
+    /* Chrome/Opera/Safari */
+  .login-email::-webkit-input-placeholder,
+  .signup-email::-webkit-input-placeholder {
+    font-size: 14px;
+    background-image: url('../public/images/login/mail.svg') ;
+    background-size: contain;
+    background-position:  1px center;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+  }
+
+  .login-password::-webkit-input-placeholder,
+  .signup-password::-webkit-input-placeholder {
+    font-size: 14px;
+    background-image: url('../public/images/login/key.svg') ;
+    background-size: contain;
+    background-position:  1px center;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+  }
+
+  .username::-webkit-input-placeholder {
+    font-size: 14px;
+    background-image: url('../public/images/login/name.svg') ;
+    background-size: contain;
+    background-position:  1px center;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+  }
+
+  .login-form input:focus,
+  .signup-form input:focus {
+    border-color: #e1e7ef;
+  }
+
+  .login-form button,
+  .signup-form button {
+    width: 40%;
+    color: #747474;
+    height: 50px;
+    margin-top: 0;
+    font-size: 16px;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #e1e7efb1;
+  }
+
+  .login-form button:hover,
+  .signup-form button:hover {
+    background-color: #e1e7ef;
+  }
+
+  .login-form button:active,
+  .signup-form button:active {
+    font-weight: 700;
+  }
 }
