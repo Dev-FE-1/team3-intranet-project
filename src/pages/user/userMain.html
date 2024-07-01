@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Page</title>
+    <link rel="stylesheet" href="./userMain.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="content-wrapper">
+        <div class="content">
+          <div class="userMain-top">
+            <div class="userMain-profile">
+              <div class="userMain-profile-title">프로필</div>
+              <div class="userMain-profile-content">
+                <div class="userMain-profile-content-top">
+                  <p class="userMain-profile-department">배달의민족</p>
+                  <p class="userMain-profile-name">이유난</p>
+                  <p class="userMain-profile-position">사장</p>
+                </div>
+                <div class="userMain-profile-content-bottom">
+                  <p class="userMain-profile-contact">Contact</p>
+                  <p class="userMain-profile-call">010-1234-5678</p>
+                  <p class="userMain-profile-email">unanbb@naver.com</p>
+                </div>
+                <img src="../../../public/images/loopy.jpg" alt="프로필사진" />
+              </div>
+            </div>
+            <div class="userMain-absent">
+              <div class="userMain-absent-title">부재신청 현황</div>
+              <div class="userMain-absent-content">부재신청 컨텐츠</div>
+            </div>
+          </div>
+          <div class="userMain-bottom">
+            <div class="userMain-notice">
+              <div class="userMain-notice-title">공지사항</div>
+              <div class="userMain-notice-content" id="noticeContent">
+                <!-- 자바스크립트로 동적으로 콘텐츠 추가 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const maxItems = 6; // 최대 표시할 small content 갯수
+        const noticeContent = document.getElementById("noticeContent");
+
+        for (let i = 0; i < maxItems; i++) {
+          const smallContent = document.createElement("div");
+          smallContent.className = "userMain-notice-smallcontent";
+          noticeContent.appendChild(smallContent);
+        }
+      });
+    </script>
+  </body>
+</html>

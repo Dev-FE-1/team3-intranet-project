@@ -1,18 +1,17 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
 }
 
-/* body 설정 */
 body {
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.container {
+.adminNotice-container {
   width: 100%;
   height: 100%;
   background-color: #e1e7ef;
@@ -22,23 +21,13 @@ body {
   align-items: center;
 }
 
-header {
-  background-color: red;
-  height: 48px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-}
-
-.content-wrapper {
+.adminNotice-content-wrapper {
   width: 100%;
   height: 100%;
   padding: 20px;
 }
 
-.content {
+.adminNotice-content {
   width: 100%;
   height: 100%;
   background-color: white;
@@ -50,46 +39,52 @@ header {
   position: relative;
 }
 
-.board {
-  width: 80%;
-  height: 20vh;
+.adminNotice-board {
+  width: 300px;
+  height: 22vh;
+  cursor: pointer;
 }
 
-.content-image {
+.adminNotice-content-image {
   width: 100%;
   height: 100%;
-  background-color: gray;
+  background-image: url("../../../../public/images/loopy.jpg");
+  background-size: cover;
+  background-position: center center;
   margin-bottom: 5px;
+  background-repeat: no-repeat;
 }
 
-.content-title {
-  align-self: flex-start; /* 텍스트를 왼쪽에 배치 */
+.adminNotice-content-title {
+  align-self: flex-start;
 }
 
-/* 추가 버튼 설정 */
-.add-button {
+.adminNotice-add-button {
   width: 38px;
   height: 38px;
   border-radius: 50%;
   color: white;
   background-color: #4b5b73;
   border: none;
-  position: absolute; /* 부모 요소를 기준으로 위치 설정 */
-  right: 16px; /* 오른쪽 여백 */
-  bottom: 16px; /* 아래쪽 여백 */
+  position: absolute;
+  text-align: center;
+  right: 16px;
+  bottom: 16px;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 22px;
+  margin-right: 0;
+  padding-top: 0;
 }
 
-.add-button:hover {
+.adminNotice-add-button:hover {
   background-color: #64b5f6;
-  transform: scale(1.15);
+  transform: scale(1.1);
 }
 
 /* 미디어쿼리 */
 
 @media (min-width: 768px) {
-  .container {
+  .adminNotice-container {
     max-width: 1440px;
     width: 100%;
     height: 100%;
@@ -100,7 +95,7 @@ header {
     align-items: center;
   }
 
-  header {
+  .adminNotice-header {
     background-color: red;
     height: 48px;
     width: 100%;
@@ -110,13 +105,13 @@ header {
     top: 0;
   }
 
-  .content-wrapper {
+  .adminNotice-content-wrapper {
     width: 100%;
     height: 100%;
-    padding: 50px;
+    padding: 30px;
   }
 
-  .content {
+  .adminNotice-content {
     width: 100%;
     height: 100%;
     background-color: white;
@@ -125,41 +120,43 @@ header {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    position: relative; /* 추가 */
+    position: relative;
   }
 
-  .board {
-    width: 80%;
-    height: 20vh;
+  .adminNotice-board {
+    width: 300px;
+    height: 22vh;
   }
 
-  .content-image {
+  .adminNotice-content-image {
     width: 100%;
     height: 100%;
-    background-color: gray;
+    background-image: url("../../../../public/images/loopy.jpg");
+    background-size: cover;
+    background-position: center center;
     margin-bottom: 5px;
+    background-repeat: no-repeat;
   }
 
-  .content-title {
-    align-self: flex-start; /* 텍스트를 왼쪽에 배치 */
+  .adminNotice-content-title {
+    align-self: flex-start;
   }
 
-  /* 추가 버튼 설정 */
-  .add-button {
+  .adminNotice-add-button {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     color: white;
     background-color: #4b5b73;
     border: none;
-    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
-    right: 20px; /* 오른쪽 여백 */
-    bottom: 20px; /* 아래쪽 여백 */
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
     cursor: pointer;
     font-size: 30px;
   }
 
-  .add-button:hover {
+  .adminNotice-add-button:hover {
     background-color: #64b5f6;
     transform: scale(1.15);
   }

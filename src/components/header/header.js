@@ -1,3 +1,7 @@
+import adminNotice, {
+  adminNoticeCreate,
+  adminNoticeContent,
+} from "../../pages/admin/notice/adminNotice.js";
 import adminNotice, { adminNoticeCreate, } from "../../pages/admin/notice/adminNotice.js";
 import absentRequest from "../../pages/admin/absent-request/absentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
@@ -181,6 +185,7 @@ function workTimeButton() {
 
 function navigatePage(event) {
   event.preventDefault();
+  const anchor = event.target.closest("a, .add-button, .board");
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
     if (anchor.hasAttribute('data-back')) {
@@ -195,15 +200,7 @@ function navigatePage(event) {
   }
 }
 
-function loadCSS(filename) {
-  const link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.type = "text/css";
-  link.href = filename;
-  document.head.appendChild(link);
-}
-
-function route() {
+export function route() {
   const path = location.pathname;
 
   switch (path) {
@@ -215,14 +212,19 @@ function route() {
       break;
     case "/notice":
       adminNotice("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNotice.css");
       break;
     case "/absent-request":
       absentRequest("#app");
       break;
     case "/notice/noticeCreate":
+    case "/notice/noticeCreate":
       adminNoticeCreate("#app");
-      loadCSS("../../src/pages/admin/admin-notice/adminNoticeCreate.css");
+      break;
+    case "/notice/noticeContent":
+      adminNoticeContent("#app");
+      break;
+    case "/profile":
+      adminProfile('#app');
       break;
     case "/profile":
       adminProfile('#app');
