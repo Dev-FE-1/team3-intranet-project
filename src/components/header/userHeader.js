@@ -193,7 +193,7 @@ export function route() {
   
   switch (path) {
     case "/oasis":
-      userMainPage('#content')
+      userMainPage('#content');
       break;
     case "/notice":
       userNotice("#content");
