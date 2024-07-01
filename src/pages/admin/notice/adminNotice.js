@@ -1,4 +1,4 @@
-import { route } from "../../../components/header/header.js";
+import { route } from "../../../components/header/adminHeader.js";
 import "../../admin/admin-notice/adminNotice.css";
 import "../../admin/admin-notice/adminNoticeCreate.css";
 import "../../admin/admin-notice/adminNoticeContent.css";
@@ -8,19 +8,19 @@ export default function adminNotice(container) {
   content.innerHTML = `<div class="adminNotice-container">
       <div class="adminNotice-content-wrapper">
         <div class="adminNotice-content">
-          <div class="adminNotice-board" data-path="/notice/noticeContent">
+          <div class="adminNotice-board" data-path="/admin-notice/content">
             <div class="adminNotice-content-image">이미지존</div>
             <div class="adminNotice-content-title">이서미님의 퇴사</div>
           </div>
-          <div class="adminNotice-board" data-path="/notice/noticeContent">
+          <div class="adminNotice-board" data-path="/admin-notice/content">
             <div class="adminNotice-content-image">이미지존</div>
             <div class="adminNotice-content-title">이서미님의 퇴사</div>
           </div>
-          <div class="adminNotice-board" data-path="/notice/noticeContent">
+          <div class="adminNotice-board" data-path="/admin-notice/content">
             <div class="adminNotice-content-image">이미지존</div>
             <div class="adminNotice-content-title">이서미님의 퇴사</div>
           </div>
-          <button class="adminNotice-add-button" data-path="/notice/noticeCreate">+</button>
+          <button class="adminNotice-add-button" data-path="/admin-notice/create">+</button>
         </div>
       </div>
     </div>`;

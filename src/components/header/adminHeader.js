@@ -1,5 +1,6 @@
 import adminNotice, {
   adminNoticeCreate,
+  adminNoticeContent,
 } from "../../pages/admin/notice/adminNotice.js";
 import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
@@ -8,7 +9,7 @@ import adminProfile, {
 } from "../../pages/admin/admin-profile/adminProfile.js";
 import adminMainPage from "../../pages/admin/admin.js";
 // import { showMainContent } from '../../main.js';
-import './header.css'
+import "./header.css";
 
 export default function adminHeader() {
   const content = document.querySelector("#header");
@@ -217,8 +218,11 @@ export function route() {
     case "/admin-absent-request":
       adminAbsentRequest("#content");
       break;
-    case "/admin-notice/noticeCreate":
+    case "/admin-notice/create":
       adminNoticeCreate("#content");
+      break;
+    case "/admin-notice/content":
+      adminNoticeContent("#content");
       break;
     case "/admin-profile":
       adminProfile("#content");

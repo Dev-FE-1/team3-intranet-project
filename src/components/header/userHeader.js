@@ -1,4 +1,4 @@
-import userMainPage from "../../pages/user/user.js";
+import userMainPage from "../../pages/user/userMain.js";
 import userProfile from "../../pages/user/user-profile/userProfile.js";
 import userNotice from "../../pages/user/user-notice/userNotice.js";
 import userAbsentRequest from "../../pages/user/user-absent-request/userAbsentRequest.js";
