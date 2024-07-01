@@ -6,7 +6,7 @@ import './header.css'
 
 
 
-export default function app() {
+export default function userHeader() {
   const content = document.querySelector("#header");
   content.style.display = 'flex';
   content.innerHTML = `<header class="header-mobile">
@@ -45,7 +45,7 @@ export default function app() {
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
+            <a href="/oasis">
               <img src="public/images/header/favicon.ico" alt="oasis"/>
             </a>
           </li>
@@ -208,4 +208,4 @@ export function route() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", app);
+document.addEventListener("DOMContentLoaded", userHeader);

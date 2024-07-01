@@ -10,7 +10,7 @@ import adminMainPage from "../../pages/admin/admin.js";
 // import { showMainContent } from '../../main.js';
 import './header.css'
 
-export default function app() {
+export default function adminHeader() {
   const content = document.querySelector("#header");
   content.innerHTML = `<header class="header-mobile">
       <nav>
@@ -53,7 +53,7 @@ export default function app() {
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
+            <a href="/admin">
               <img src="public/images/header/favicon.ico" alt="oasis"/>
             </a>
           </li>
@@ -231,4 +231,4 @@ export function route() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", app);
+document.addEventListener("DOMContentLoaded", adminHeader);

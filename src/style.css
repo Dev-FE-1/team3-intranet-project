@@ -8,6 +8,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: "Nanum Gothic"
 }
 
 #app {
@@ -42,6 +43,12 @@ body {
 /* Login */
 a {
   text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: "Nanum Gothic"
 }
 
 button:focus,
@@ -106,7 +113,37 @@ form {
   height: 40px;
   border-radius: 10px;
   margin-bottom: 20px;
-  padding: 10px 15px;
+  padding: 10px
+}
+
+/* Chrome/Opera/Safari */
+.login-email::-webkit-input-placeholder,
+.signup-email::-webkit-input-placeholder {
+  font-size: 12px;
+  background-image: url('../public/images/login/mail.svg') ;
+  background-size: contain;
+  background-position:  1px center;
+  background-repeat: no-repeat;
+  text-indent: 20px;
+}
+
+.login-password::-webkit-input-placeholder,
+.signup-password::-webkit-input-placeholder {
+  font-size: 12px;
+  background-image: url('../public/images/login/key.svg') ;
+  background-size: contain;
+  background-position:  1px center;
+  background-repeat: no-repeat;
+  text-indent: 20px;
+}
+
+.username::-webkit-input-placeholder {
+  font-size: 12px;
+  background-image: url('../public/images/login/name.svg') ;
+  background-size: contain;
+  background-position:  1px center;
+  background-repeat: no-repeat;
+  text-indent: 20px;
 }
 
 .login-form input:focus,
@@ -116,10 +153,10 @@ form {
 
 .login-form button,
 .signup-form button {
-  width: auto;
+  height: 40px;
+  width: 80%;
   border: none;
-  padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .login-form button:hover,
@@ -176,6 +213,36 @@ form {
     padding: 10px 15px;
   }
 
+    /* Chrome/Opera/Safari */
+  .login-email::-webkit-input-placeholder,
+  .signup-email::-webkit-input-placeholder {
+    font-size: 14px;
+    background-image: url('../public/images/login/mail.svg') ;
+    background-size: contain;
+    background-position:  1px center;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+  }
+
+  .login-password::-webkit-input-placeholder,
+  .signup-password::-webkit-input-placeholder {
+    font-size: 14px;
+    background-image: url('../public/images/login/key.svg') ;
+    background-size: contain;
+    background-position:  1px center;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+  }
+
+  .username::-webkit-input-placeholder {
+    font-size: 14px;
+    background-image: url('../public/images/login/name.svg') ;
+    background-size: contain;
+    background-position:  1px center;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+  }
+
   .login-form input:focus,
   .signup-form input:focus {
     border-color: #e1e7ef;
@@ -183,11 +250,15 @@ form {
 
   .login-form button,
   .signup-form button {
-    margin-top: 10px;
+    width: 40%;
+    color: #747474;
+    height: 50px;
+    margin-top: 0;
     font-size: 16px;
     border: none;
     padding: 10px 30px;
-    border-radius: 20px;
+    border-radius: 10px;
+    background-color: #e1e7efb1;
   }
 
   .login-form button:hover,
