@@ -2,6 +2,7 @@ import userMainPage from '../../pages/user/user.js';
 import userProfile from '../../pages/user/user-profile/userProfile.js';
 import userNotice from '../../pages/user/user-notice/userNotice.js';
 import userAbsentRequest from '../../pages/user/user-absent-request/userAbsentRequest.js';
+import { getAuth, signOut } from "firebase/auth";
 import './header.css'
 
 
@@ -60,6 +61,9 @@ export default function userHeader() {
           <li>
             <button class="header-time">Working Hours</button>
           </li>
+          <li>
+            <a href="/" id="logout">로그아웃</a>
+          </li>
           <li class="header-profile-image">
             <a href="/my-profile">
               <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
@@ -100,6 +104,21 @@ export default function userHeader() {
   });
 
   document.body.addEventListener("click", navigatePage);
+
+  const logoutButton = document.getElementById("logout");
+  logoutButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("user");
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.error("로그아웃 실패", error);
+      });
+  });
+
   route();
 }
 

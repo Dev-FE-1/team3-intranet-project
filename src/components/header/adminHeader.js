@@ -7,7 +7,7 @@ import adminProfile, {
   adminProfileModify,
 } from "../../pages/admin/admin-profile/adminProfile.js";
 import adminMainPage from "../../pages/admin/admin.js";
-// import { showMainContent } from '../../main.js';
+import { getAuth, signOut } from "firebase/auth";
 import './header.css'
 
 export default function adminHeader() {
@@ -71,6 +71,9 @@ export default function adminHeader() {
           <li>
             <button class="header-time">Working Hours</button>
           </li>
+          <li>
+            <a href="/" id="logout">로그아웃</a>
+          </li>
           <li class="header-profile-image">
             <a href="/admin-profile">
               <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
@@ -113,6 +116,22 @@ export default function adminHeader() {
   });
 
   document.body.addEventListener("click", navigatePage);
+
+  // 로그아웃 버튼 이벤트 추가
+  const logoutButton = document.getElementById("logout");
+  logoutButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("user");
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.error("로그아웃 실패", error);
+      });
+  });
+
   route();
 }
 
@@ -122,10 +141,7 @@ function workTimeButton() {
   const endTimeModal = document.querySelector(".end-time-modal");
   const startButton = startTimeModal.querySelector(".start");
   const endButton = endTimeModal.querySelector(".end");
-  // const closeButtonStart = startTimeModal.querySelector('.close');
-  // const closeButtonEnd = endTimeModal.querySelector('.close');
-  const modalBackgroundStart =
-    startTimeModal.querySelector(".modal-background");
+  const modalBackgroundStart = startTimeModal.querySelector(".modal-background");
   const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
   let workStartTime;
@@ -157,9 +173,9 @@ function workTimeButton() {
     const elapsedTime = currentTime - workStartTime;
     const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
     const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
-    const second = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+    const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
     openButtons.forEach(
-      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${second}초`)
+      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${seconds}초`)
     );
   }
 

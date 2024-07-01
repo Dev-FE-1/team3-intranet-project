@@ -3,43 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Header</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>header</title>
     <link rel="stylesheet" href="./header.css" />
   </head>
-
   <body>
     <header class="header-mobile">
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
-              <img
-                src="../../../public/images/header/back.svg"
-                alt="back-button"
-              />
+            <a data-back>
+              <img src="public/images/header/back.svg" alt="back-button" />
             </a>
           </li>
           <li>
             <a href="/employee-list">
               <img
-                src="../../../public/images/header/employee-list.svg"
+                src="public/images/header/employee-list.svg"
                 alt="employee-list"
               />
             </a>
           </li>
           <li>
-            <a href="/notice">
-              <img
-                src="../../../public/images/header/notice.svg"
-                alt="notice"
-              />
+            <a href="/admin-notice">
+              <img src="public/images/header/notice.svg" alt="notice" />
             </a>
           </li>
           <li>
-            <a href="/absent-request">
+            <a href="/admin-absent-request">
               <img
-                src="../../../public/images/header/absent-request.svg"
+                src="public/images/header/absent-request.svg"
                 alt="absent-request"
               />
             </a>
@@ -50,10 +42,12 @@
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <img
-              src="../../../public/images/header/header-profile.jpg"
-              alt="my-profile"
-            />
+            <a href="/profile">
+              <img
+                src="public/images/header/header-profile.jpg"
+                alt="my-profile"
+              />
+            </a>
           </li>
         </ul>
       </nav>
@@ -63,38 +57,38 @@
       <nav>
         <ul class="header-menu">
           <li>
-            <a href="/">
-              <img
-                src="../../../public/images/header/favicon.ico"
-                alt="oasis"
-              />
+            <a href="/admin">
+              <img src="public/images/header/favicon.ico" alt="oasis" />
             </a>
           </li>
           <li>
             <a href="/employee-list">임직원 리스트</a>
           </li>
           <li>
-            <a href="/notice">공지사항</a>
+            <a href="/admin-notice">공지사항</a>
           </li>
           <li>
-            <a href="/absent-request">부재신청</a>
+            <a href="/admin-absent-request">부재신청</a>
           </li>
         </ul>
         <ul class="header-profile">
           <li>
             <button class="header-time">Working Hours</button>
           </li>
+          <li>
+            <a href="/logout">로그아웃</a>
+          </li>
           <li class="header-profile-image">
-            <img
-              src="../../../public/images/header/header-profile.jpg"
-              alt="my-profile"
-            />
+            <a href="/admin-profile">
+              <img
+                src="public/images/header/header-profile.jpg"
+                alt="my-profile"
+              />
+            </a>
           </li>
         </ul>
       </nav>
     </header>
-
-    <div id="app"></div>
 
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
@@ -119,7 +113,5 @@
         </div>
       </div>
     </div>
-
-    <script src="header.js" type="module"></script>
   </body>
 </html>

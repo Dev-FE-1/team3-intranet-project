@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence, signOut, browserLocalPersistence } from "firebase/auth";
 import { route } from './components/header/adminHeader.js';
 import adminHeader from './components/header/adminHeader.js';
 import userHeader from './components/header/userHeader.js';
@@ -63,6 +63,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const analytics = getAnalytics(app);
   const auth = getAuth();
 
+  // 로그인 상태 확인
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    const user = JSON.parse(storedUser);
+    if (user.email === "admin@gmail.com") {
+      showMainContent();
+      adminHeader();
+      route();
+      window.history.pushState({}, '', '/admin');
+    } else {
+      showMainContent();
+      userHeader();
+      route();
+      window.history.pushState({}, '', '/oasis');
+    }
+    return;
+  }
+
   // 로그인 폼 렌더링
   login('#app');
 
@@ -105,16 +123,21 @@ document.addEventListener('DOMContentLoaded', function () {
   // 로그인
   loginBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    
     const loginEmail = document.querySelector('.login-email').value;
     const loginPassword = document.querySelector('.login-password').value;
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    
+    setPersistence(auth, browserLocalPersistence)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      })
       .then((userCredential) => {
         console.log('로그인 성공', userCredential);
         const user = userCredential.user;
         localStorage.setItem('user', JSON.stringify(user));
-
+  
         showMainContent();
-
+  
         if (user.email === "admin@gmail.com") {
           adminHeader();
           window.history.pushState({}, '', '/admin');
@@ -127,9 +150,6 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch((error) => {
         alert('아이디와 비밀번호를 다시 확인해주세요.');
         console.log('로그인 실패', error);
-        // ...
       });
-  });
-
-  
+  });  
 });
