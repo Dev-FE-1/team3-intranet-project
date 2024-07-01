@@ -6,7 +6,7 @@ import employeeList from "../../pages/admin/employee-list/employeeList.js";
 import adminProfile, {
   adminProfileModify,
 } from "../../pages/admin/admin-profile/adminProfile.js";
-import adminMainPage from "../../pages/admin/admin.js";
+import adminMainPage from "../../pages/admin/adminMain.js";
 // import { showMainContent } from '../../main.js';
 import './header.css'
 
