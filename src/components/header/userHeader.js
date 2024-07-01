@@ -122,6 +122,7 @@ export default function userHeader() {
   route();
 }
 
+// 근무시간
 function workTimeButton() {
   const openButtons = document.querySelectorAll(".header-time");
   const startTimeModal = document.querySelector(".start-time-modal");
@@ -209,6 +210,10 @@ function navigatePage(event) {
 
 export function route() {
   const path = location.pathname;
+
+  if(document.querySelector("#header").style.display = "none") {
+    document.querySelector("#header").style.display = "flex";
+  }
   
   switch (path) {
     case "/oasis":
@@ -224,7 +229,14 @@ export function route() {
       userProfile('#content');
       document.querySelector('#header').style.display='none';
       break;
+    default:
+      console.log(`Unknown path: ${path}`);
+      break;
   }
 }
 
-document.addEventListener("DOMContentLoaded", userHeader);
+document.addEventListener("DOMContentLoaded", () => {
+  userHeader();
+  route();
+});
+

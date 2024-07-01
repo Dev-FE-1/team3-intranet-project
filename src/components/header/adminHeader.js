@@ -83,8 +83,6 @@ export default function adminHeader() {
       </nav>
     </header>
 
-    
-
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
       <div class="modal-background">
@@ -117,7 +115,7 @@ export default function adminHeader() {
 
   document.body.addEventListener("click", navigatePage);
 
-  // 로그아웃 버튼 이벤트 추가
+  // 로그아웃
   const logoutButton = document.getElementById("logout");
   logoutButton.addEventListener("click", (event) => {
     event.preventDefault();
@@ -135,6 +133,7 @@ export default function adminHeader() {
   route();
 }
 
+// 근무시간
 function workTimeButton() {
   const openButtons = document.querySelectorAll(".header-time");
   const startTimeModal = document.querySelector(".start-time-modal");
@@ -220,6 +219,10 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
+  if(document.querySelector("#header").style.display = "none") {
+    document.querySelector("#header").style.display = "flex";
+  }
+
   switch (path) {
     case "/admin":
       adminMainPage("#content");
@@ -244,7 +247,13 @@ export function route() {
       adminProfileModify("#content");
       document.querySelector("#header").style.display = "none";
       break;
+    default:
+      console.log(`Unknown path: ${path}`);
+      break;
   }
 }
 
-document.addEventListener("DOMContentLoaded", adminHeader);
+document.addEventListener("DOMContentLoaded", () => {
+  adminHeader();
+  route();
+});

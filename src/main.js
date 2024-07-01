@@ -6,6 +6,16 @@ import adminHeader from './components/header/adminHeader.js';
 import userHeader from './components/header/userHeader.js';
 import '../src/style.css';
 
+const firebaseConfig = {
+  apiKey: "AIzaSyARpUQRNqHiM7HENsPqxMWujR_xblO3Cx4",
+  authDomain: "intranetlogin-49466.firebaseapp.com",
+  projectId: "intranetlogin-49466",
+  storageBucket: "intranetlogin-49466.appspot.com",
+  messagingSenderId: "472976640331",
+  appId: "1:472976640331:web:e6f64f5b67c8790fba80ce",
+  measurementId: "G-0GP164WPZ7"
+};
+
 function login(container) {
   const content = document.querySelector(container);
   content.innerHTML = `<div id="login">
@@ -48,16 +58,6 @@ export function showMainContent() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Firebase 설정 및 초기화
-  const firebaseConfig = {
-    apiKey: "AIzaSyARpUQRNqHiM7HENsPqxMWujR_xblO3Cx4",
-    authDomain: "intranetlogin-49466.firebaseapp.com",
-    projectId: "intranetlogin-49466",
-    storageBucket: "intranetlogin-49466.appspot.com",
-    messagingSenderId: "472976640331",
-    appId: "1:472976640331:web:e6f64f5b67c8790fba80ce",
-    measurementId: "G-0GP164WPZ7"
-  };
 
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
@@ -71,20 +71,19 @@ document.addEventListener('DOMContentLoaded', function () {
       showMainContent();
       adminHeader();
       route();
-      window.history.pushState({}, '', '/admin');
+      window.history.replaceState({}, '', location.pathname);
     } else {
       showMainContent();
       userHeader();
       route();
-      window.history.pushState({}, '', '/oasis');
+      window.history.replaceState({}, '', location.pathname);
     }
     return;
   }
 
-  // 로그인 폼 렌더링
   login('#app');
 
-  // 이벤트 위임을 통해 링크 클릭 이벤트 처리
+  // 회원가입 <-> 로그인
   document.body.addEventListener('click', function (event) {
     if (event.target.id === 'signup-link') {
       event.preventDefault();
@@ -140,10 +139,10 @@ document.addEventListener('DOMContentLoaded', function () {
   
         if (user.email === "admin@gmail.com") {
           adminHeader();
-          window.history.pushState({}, '', '/admin');
+          window.history.replaceState({}, '', location.pathname); 
         } else {
           userHeader();
-          window.history.pushState({}, '', '/oasis');
+          window.history.replaceState({}, '', location.pathname);
         }
         route();
       })
