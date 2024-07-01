@@ -6,7 +6,7 @@ export default function adminProfile(container) {
     content.innerHTML = `<div class="container">
     <div class="card">
       <div class="proflie-header semi-bold">
-        <img src="/public/images/profile/Vector 9.png" alt="back" id="backImg" data-path="/">
+        <img src="/public/images/profile/Vector 9.png" alt="back" id="backImg" data-path="/admin">
         <p>Profile</p>
       </div>
       <div class="profile">
@@ -27,7 +27,7 @@ export default function adminProfile(container) {
             <label for="dateOfBirth">생년월일<span id="dateOfBirth">1998-02-15</span></label>
             <label for="etc">기타 사항<span id="etc">강아지를 매우 좋아함</span></label>
             <label>
-              <button type="button" class="btn-edit bold" data-path="/profile/profileModify">EDIT</button>
+              <button type="button" class="btn-edit bold" data-path="/admin-profile/profileModify">EDIT</button>
             </label>
           </div>   
         </form>
@@ -47,6 +47,7 @@ export default function adminProfile(container) {
     }
   });
 
+  //수정 버튼, 수정 페이지로 이동
   const editButton=document.querySelector(".btn-edit");
   editButton.addEventListener('click',(event)=>{
     event.preventDefault();
@@ -66,7 +67,7 @@ export function adminProfileModify(container){
     <div class="container">
     <div class="card">
       <div class="proflie-header semi-bold">
-        <img src="/public/images/profile/Vector 9.png" alt="back" id="backImg" data-path="/profile">
+        <img src="/public/images/profile/Vector 9.png" alt="back" id="backImg" data-path="/admin-profile">
         <p>Profile</p>
       </div>
       <div class="profile">
@@ -109,4 +110,8 @@ export function adminProfileModify(container){
       route();
     }
   });
+
+  //저장 버튼, 데이터 넣고 doc페이지로 이동 (미작성)
+
+
 }

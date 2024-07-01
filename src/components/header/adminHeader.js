@@ -41,7 +41,7 @@ export default function adminHeader() {
             <button class="header-time">Working Hours</button>
           </li>
           <li class="header-profile-image">
-            <a href="/profile">
+            <a href="/admin-profile">
               <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
             </a>
           </li>
@@ -204,6 +204,10 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
+  if(document.querySelector("#header").style.display = "none"){
+    document.querySelector("#header").style.display = "block";
+  }
+  
   switch (path) {
     case "/admin":
       adminMainPage("#content");
