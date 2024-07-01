@@ -187,7 +187,10 @@ function workTimeButton() {
 }
 
 function navigatePage(event) {
-  event.preventDefault();
+  const fileInput = event.target.closest("input[type='file']");
+  if (!fileInput) {
+    event.preventDefault();
+  }
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
     if (anchor.hasAttribute("data-back")) {

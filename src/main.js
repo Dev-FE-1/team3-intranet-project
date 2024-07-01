@@ -1,10 +1,17 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { route } from './components/header/adminHeader.js';
-import adminHeader from './components/header/adminHeader.js';
-import userHeader from './components/header/userHeader.js';
-import '../src/style.css';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
+import { route } from "./components/header/adminHeader.js";
+import adminHeader from "./components/header/adminHeader.js";
+import userHeader from "./components/header/userHeader.js";
+import "../src/style.css";
 
 function login(container) {
   const content = document.querySelector(container);
@@ -40,14 +47,14 @@ function login(container) {
 }
 
 export function showMainContent() {
-  const app = document.querySelector('#app');
+  const app = document.querySelector("#app");
   app.innerHTML = `
     <div id="header"></div>
     <div id="content"></div>
   `;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   // Firebase 설정 및 초기화
   const firebaseConfig = {
     apiKey: "AIzaSyARpUQRNqHiM7HENsPqxMWujR_xblO3Cx4",
@@ -56,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     storageBucket: "intranetlogin-49466.appspot.com",
     messagingSenderId: "472976640331",
     appId: "1:472976640331:web:e6f64f5b67c8790fba80ce",
-    measurementId: "G-0GP164WPZ7"
+    measurementId: "G-0GP164WPZ7",
   };
 
   const app = initializeApp(firebaseConfig);
@@ -64,72 +71,87 @@ document.addEventListener('DOMContentLoaded', function () {
   const auth = getAuth();
 
   // 로그인 폼 렌더링
-  login('#app');
+  login("#app");
 
-  // 이벤트 위임을 통해 링크 클릭 이벤트 처리
-  document.body.addEventListener('click', function (event) {
-    if (event.target.id === 'signup-link') {
-      event.preventDefault();
-      document.querySelector('.login').style.display = 'none';
-      document.querySelector('.signup').style.display = 'block';
-    }
-    if (event.target.id === 'login-link') {
-      event.preventDefault();
-      document.querySelector('.signup').style.display = 'none';
-      document.querySelector('.login').style.display = 'block';
+  // 인증 상태 변경 이벤트 리스너 추가
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      showMainContent();
+      if (user.email === "admin@gmail.com") {
+        adminHeader();
+        window.history.pushState({}, "", "/admin");
+      } else {
+        userHeader();
+        window.history.pushState({}, "", "/oasis");
+      }
+      route();
+    } else {
+      login("#app");
     }
   });
 
-  const signupBtn = document.querySelector('.signup-btn');
-  const loginBtn = document.querySelector('.login-btn');
+  // 이벤트 위임을 통해 링크 클릭 이벤트 처리
+  document.body.addEventListener("click", function (event) {
+    if (event.target.id === "signup-link") {
+      event.preventDefault();
+      document.querySelector(".login").style.display = "none";
+      document.querySelector(".signup").style.display = "block";
+    }
+    if (event.target.id === "login-link") {
+      event.preventDefault();
+      document.querySelector(".signup").style.display = "none";
+      document.querySelector(".login").style.display = "block";
+    }
+  });
+
+  const signupBtn = document.querySelector(".signup-btn");
+  const loginBtn = document.querySelector(".login-btn");
 
   // 회원가입
-  signupBtn.addEventListener('click', (event) => {
+  signupBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const userName = document.querySelector('.username').value;
-    const signupEmail = document.querySelector('.signup-email').value;
-    const signupPassword = document.querySelector('.signup-password').value;
+    const userName = document.querySelector(".username").value;
+    const signupEmail = document.querySelector(".signup-email").value;
+    const signupPassword = document.querySelector(".signup-password").value;
     console.log(userName, signupEmail, signupPassword);
 
     createUserWithEmailAndPassword(auth, signupEmail, signupPassword)
       .then((userCredential) => {
-        console.log('회원가입 성공', userCredential);
+        console.log("회원가입 성공", userCredential);
         // ...
       })
       .catch((error) => {
-        console.log('error', error);
+        console.log("error", error);
         // ...
       });
   });
 
   // 로그인
-  loginBtn.addEventListener('click', (event) => {
+  loginBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    const loginEmail = document.querySelector('.login-email').value;
-    const loginPassword = document.querySelector('.login-password').value;
+    const loginEmail = document.querySelector(".login-email").value;
+    const loginPassword = document.querySelector(".login-password").value;
     signInWithEmailAndPassword(auth, loginEmail, loginPassword)
       .then((userCredential) => {
-        console.log('로그인 성공', userCredential);
+        console.log("로그인 성공", userCredential);
         const user = userCredential.user;
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user));
 
         showMainContent();
 
         if (user.email === "admin@gmail.com") {
           adminHeader();
-          window.history.pushState({}, '', '/admin');
+          window.history.pushState({}, "", "/admin");
         } else {
           userHeader();
-          window.history.pushState({}, '', '/oasis');
+          window.history.pushState({}, "", "/oasis");
         }
         route();
       })
       .catch((error) => {
-        alert('아이디와 비밀번호를 다시 확인해주세요.');
-        console.log('로그인 실패', error);
+        alert("아이디와 비밀번호를 다시 확인해주세요.");
+        console.log("로그인 실패", error);
         // ...
       });
   });
-
-  
 });

@@ -64,7 +64,8 @@ export function adminNoticeCreate(container) {
           </div>
           <div class="adminNoticeCreate-image-upload">
             첨부 사진
-            <div class="adminNoticeCreate-image-upload-box"></div>
+            
+            <input type="file" id="imgUpload"  accept="image/*" />
           </div>
           <div class="adminNoticeCreate-button-zone">
             <button id="cancel">취소</button>
@@ -77,8 +78,20 @@ export function adminNoticeCreate(container) {
   const cancelButton = document.querySelector("#cancel");
   cancelButton.addEventListener("click", (event) => {
     event.preventDefault();
-    history.pushState(null, null, "/notice");
+    history.pushState(null, null, "/admin-notice");
     route();
+  });
+
+  const submitButton = document.querySelector("#submit");
+  submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    // Add your submit logic here
+    console.log("Form submitted");
+  });
+
+  const fileInput = document.querySelector("#avatar");
+  fileInput.addEventListener("change", (event) => {
+    console.log("File selected:", event.target.files[0]);
   });
 }
 
@@ -96,6 +109,7 @@ export function adminNoticeContent(container) {
           <div class="adminNoticeContent-img-box">이미지</div>
           <div class="adminNoticeContent-description-box">공지내용문구</div>
           <hr class="adminNoticeContent-divider2" />
+          
           <div class="adminNoticeContent-button-zone">
             <button id="delete">삭제</button>
             <button id="submit">수정</button>
