@@ -2,6 +2,7 @@ import userMainPage from '../../pages/user/user.js';
 import userProfile from '../../pages/user/user-profile/userProfile.js';
 import userNotice from '../../pages/user/user-notice/userNotice.js';
 import userAbsentRequest from '../../pages/user/user-absent-request/userAbsentRequest.js';
+import './header.css'
 
 
 
@@ -67,8 +68,6 @@ export default function app() {
         </ul>
       </nav>
     </header>
-
-    
 
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
@@ -191,23 +190,19 @@ function navigatePage(event) {
 
 export function route() {
   const path = location.pathname;
-
-  if(document.querySelector('#header').style.display='none') {
-    document.querySelector('#header').style.display='flex';
-  }
   
   switch (path) {
-    case "/":
-      userMainPage('#app')
+    case "/oasis":
+      userMainPage('#content')
       break;
     case "/notice":
-      userNotice("#app");
+      userNotice("#content");
       break;
     case "/absent-request":
-      userAbsentRequest("#app");
+      userAbsentRequest("#content");
       break;
     case "/my-profile":
-      userProfile('#app');
+      userProfile('#content');
       document.querySelector('#header').style.display='none';
       break;
   }

@@ -1,13 +1,17 @@
-import adminNotice, { adminNoticeCreate, } from "../../pages/admin/notice/adminNotice.js";
-import adminAbsentRequest from '../../pages/admin/absent-request/adminAbsentRequest.js';
+import adminNotice, {
+  adminNoticeCreate,
+} from "../../pages/admin/notice/adminNotice.js";
+import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import adminProfile,{ adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
-import adminMainPage from '../../pages/admin/admin.js';
-
+import adminProfile, {
+  adminProfileModify,
+} from "../../pages/admin/admin-profile/adminProfile.js";
+import adminMainPage from "../../pages/admin/admin.js";
+// import { showMainContent } from '../../main.js';
+import './header.css'
 
 export default function app() {
   const content = document.querySelector("#header");
-  content.style.display = 'flex';
   content.innerHTML = `<header class="header-mobile">
       <nav>
         <ul class="header-menu">
@@ -185,13 +189,12 @@ function navigatePage(event) {
   event.preventDefault();
   const anchor = event.target.closest("a, .add-button");
   if (anchor) {
-    if (anchor.hasAttribute('data-back')) {
-      history.back();   
+    if (anchor.hasAttribute("data-back")) {
+      history.back();
     } else {
-      event.preventDefault();
       const path = anchor.getAttribute("href") || anchor.dataset.path;
       if (path) {
-        history.pushState(null, null, path);       
+        history.pushState(null, null, path);
         route();
       }
     }
@@ -200,33 +203,30 @@ function navigatePage(event) {
 
 export function route() {
   const path = location.pathname;
-  if(document.querySelector('#header').style.display='none'){
-    document.querySelector('#header').style.display='block';
-  }
-  
+
   switch (path) {
-    case "/":
-      adminMainPage('#app')
+    case "/admin":
+      adminMainPage("#content");
       break;
     case "/employee-list":
-      employeeList("#app");
+      employeeList("#content");
       break;
     case "/admin-notice":
-      adminNotice("#app");
+      adminNotice("#content");
       break;
     case "/admin-absent-request":
-      adminAbsentRequest("#app");
+      adminAbsentRequest("#content");
       break;
     case "/admin-notice/noticeCreate":
-      adminNoticeCreate("#app");
+      adminNoticeCreate("#content");
       break;
     case "/admin-profile":
-      adminProfile('#app');
-      document.querySelector('#header').style.display='none';
+      adminProfile("#content");
+      document.querySelector("#header").style.display = "none";
       break;
     case "/admin-profile/profileModify":
-      adminProfileModify('#app');
-      document.querySelector('#header').style.display='none';
+      adminProfileModify("#content");
+      document.querySelector("#header").style.display = "none";
       break;
   }
 }
