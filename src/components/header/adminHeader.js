@@ -1,14 +1,11 @@
-import adminNotice, {
-  adminNoticeCreate,
-} from "../../pages/admin/notice/adminNotice.js";
+import adminNotice, { adminNoticeCreate } from "../../pages/admin/notice/adminNotice.js";
 import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import adminProfile, {
-  adminProfileModify,
-} from "../../pages/admin/admin-profile/adminProfile.js";
+import adminProfile, { adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
 import adminMainPage from "../../pages/admin/admin.js";
 import { getAuth, signOut } from "firebase/auth";
-import './header.css'
+import "./header.css";
+import { showMainContent } from '../../main.js';
 
 export default function adminHeader() {
   const content = document.querySelector("#header");
@@ -39,6 +36,11 @@ export default function adminHeader() {
         <ul class="header-profile">
           <li>
             <button class="header-time">Working Hours</button>
+          </li>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/profile">
@@ -71,8 +73,10 @@ export default function adminHeader() {
           <li>
             <button class="header-time">Working Hours</button>
           </li>
-          <li>
-            <a href="/" id="logout">로그아웃</a>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/admin-profile">
@@ -140,7 +144,8 @@ function workTimeButton() {
   const endTimeModal = document.querySelector(".end-time-modal");
   const startButton = startTimeModal.querySelector(".start");
   const endButton = endTimeModal.querySelector(".end");
-  const modalBackgroundStart = startTimeModal.querySelector(".modal-background");
+  const modalBackgroundStart =
+    startTimeModal.querySelector(".modal-background");
   const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
   let workStartTime;
@@ -174,7 +179,8 @@ function workTimeButton() {
     const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
     openButtons.forEach(
-      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${seconds}초`)
+      (button) =>
+        (button.textContent = `${hours}시간 ${minutes}분 ${seconds}초`)
     );
   }
 
@@ -219,7 +225,7 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
-  if(document.querySelector("#header").style.display = "none") {
+  if ((document.querySelector("#header").style.display = "none")) {
     document.querySelector("#header").style.display = "flex";
   }
 
@@ -236,8 +242,11 @@ export function route() {
     case "/admin-absent-request":
       adminAbsentRequest("#content");
       break;
-    case "/admin-notice/noticeCreate":
+    case "/admin-notice/create":
       adminNoticeCreate("#content");
+      break;
+    case "/admin-notice/content":
+      adminNoticeContent("#content");
       break;
     case "/admin-profile":
       adminProfile("#content");
@@ -246,9 +255,6 @@ export function route() {
     case "/admin-profile/profileModify":
       adminProfileModify("#content");
       document.querySelector("#header").style.display = "none";
-      break;
-    default:
-      console.log(`Unknown path: ${path}`);
       break;
   }
 }

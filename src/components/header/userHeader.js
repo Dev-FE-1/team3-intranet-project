@@ -4,12 +4,11 @@ import userNotice from '../../pages/user/user-notice/userNotice.js';
 import userAbsentRequest from '../../pages/user/user-absent-request/userAbsentRequest.js';
 import { getAuth, signOut } from "firebase/auth";
 import './header.css'
-
+import { showMainContent } from '../../main.js';
 
 
 export default function userHeader() {
   const content = document.querySelector("#header");
-  content.style.display = 'flex';
   content.innerHTML = `<header class="header-mobile">
       <nav>
         <ul class="header-menu">
@@ -32,6 +31,11 @@ export default function userHeader() {
         <ul class="header-profile">
           <li>
             <button class="header-time">Working Hours</button>
+          </li>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/my-profile">
@@ -61,8 +65,10 @@ export default function userHeader() {
           <li>
             <button class="header-time">Working Hours</button>
           </li>
-          <li>
-            <a href="/" id="logout">로그아웃</a>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/my-profile">
@@ -228,9 +234,6 @@ export function route() {
     case "/my-profile":
       userProfile('#content');
       document.querySelector('#header').style.display='none';
-      break;
-    default:
-      console.log(`Unknown path: ${path}`);
       break;
   }
 }

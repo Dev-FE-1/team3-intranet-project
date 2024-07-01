@@ -139,12 +139,13 @@ document.addEventListener('DOMContentLoaded', function () {
   
         if (user.email === "admin@gmail.com") {
           adminHeader();
-          window.history.replaceState({}, '', location.pathname); 
+          window.history.replaceState({}, '', '/admin');
+          route();
         } else {
           userHeader();
-          window.history.replaceState({}, '', location.pathname);
+          window.history.replaceState({}, '', '/oasis');
+          route();
         }
-        route();
       })
       .catch((error) => {
         alert('아이디와 비밀번호를 다시 확인해주세요.');
