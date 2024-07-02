@@ -1,14 +1,14 @@
+import { showMainContent } from '../../main.js';
 import userMainPage from '../../pages/user/user.js';
 import userProfile from '../../pages/user/user-profile/userProfile.js';
 import userNotice from '../../pages/user/user-notice/userNotice.js';
 import userAbsentRequest from '../../pages/user/user-absent-request/userAbsentRequest.js';
+import { getAuth, signOut } from "firebase/auth";
 import './header.css'
-
 
 
 export default function userHeader() {
   const content = document.querySelector("#header");
-  content.style.display = 'flex';
   content.innerHTML = `<header class="header-mobile">
       <nav>
         <ul class="header-menu">
@@ -31,6 +31,11 @@ export default function userHeader() {
         <ul class="header-profile">
           <li>
             <button class="header-time">Working Hours</button>
+          </li>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/my-profile">
@@ -59,6 +64,11 @@ export default function userHeader() {
         <ul class="header-profile">
           <li>
             <button class="header-time">Working Hours</button>
+          </li>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/my-profile">
@@ -94,15 +104,36 @@ export default function userHeader() {
     </div>`;
 
   workTimeButton();
+  
   window.addEventListener("popstate", (event) => {
-    console.log("popstate");
+    // console.log("popstate");
     route();
   });
 
   document.body.addEventListener("click", navigatePage);
+  document.body.addEventListener("click", logout);
   route();
 }
 
+// 로그아웃
+function logout(event) {
+  event.preventDefault();
+  const logout = event.target.closest(".logout");
+  const auth = getAuth();
+  if (logout) {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("workStartTime");
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.error("로그아웃 실패", error);
+      });
+  }
+}
+
+// 근무시간
 function workTimeButton() {
   const openButtons = document.querySelectorAll(".header-time");
   const startTimeModal = document.querySelector(".start-time-modal");
@@ -115,8 +146,14 @@ function workTimeButton() {
     startTimeModal.querySelector(".modal-background");
   const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
-  let workStartTime;
+  let workStartTime = localStorage.getItem("workStartTime");
   let workInterval;
+
+  if (workStartTime) {
+    workStartTime = parseInt(workStartTime, 10);
+    workInterval = setInterval(updateWorkTime, 1000);
+    updateWorkTime();
+  }
 
   function toggleStartTimeModal() {
     startTimeModal.classList.toggle("hidden");
@@ -128,13 +165,16 @@ function workTimeButton() {
 
   function startWork() {
     workStartTime = Date.now();
+    localStorage.setItem("workStartTime", workStartTime);
     workInterval = setInterval(updateWorkTime, 1000);
-    openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
+    // openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
+    updateWorkTime();
     toggleStartTimeModal();
   }
 
   function endWork() {
     clearInterval(workInterval);
+    localStorage.removeItem("workStartTime");
     openButtons.forEach((button) => (button.textContent = "Working Hours"));
     toggleEndTimeModal();
   }
@@ -190,6 +230,10 @@ function navigatePage(event) {
 
 export function route() {
   const path = location.pathname;
+
+  if(document.querySelector("#header").style.display === "none") {
+    document.querySelector("#header").style.display = "flex";
+  }
   
   switch (path) {
     case "/oasis":
@@ -208,4 +252,9 @@ export function route() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", userHeader);
+document.addEventListener("DOMContentLoaded", () => {
+  showMainContent();
+  userHeader();
+  route();
+});
+

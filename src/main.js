@@ -1,10 +1,20 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { route } from './components/header/adminHeader.js';
 import adminHeader from './components/header/adminHeader.js';
 import userHeader from './components/header/userHeader.js';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence, signOut, browserLocalPersistence } from "firebase/auth";
+import { route } from './components/header/adminHeader.js';
 import '../src/style.css';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyARpUQRNqHiM7HENsPqxMWujR_xblO3Cx4",
+  authDomain: "intranetlogin-49466.firebaseapp.com",
+  projectId: "intranetlogin-49466",
+  storageBucket: "intranetlogin-49466.appspot.com",
+  messagingSenderId: "472976640331",
+  appId: "1:472976640331:web:e6f64f5b67c8790fba80ce",
+  measurementId: "G-0GP164WPZ7"
+};
 
 function login(container) {
   const content = document.querySelector(container);
@@ -48,25 +58,32 @@ export function showMainContent() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Firebase 설정 및 초기화
-  const firebaseConfig = {
-    apiKey: "AIzaSyARpUQRNqHiM7HENsPqxMWujR_xblO3Cx4",
-    authDomain: "intranetlogin-49466.firebaseapp.com",
-    projectId: "intranetlogin-49466",
-    storageBucket: "intranetlogin-49466.appspot.com",
-    messagingSenderId: "472976640331",
-    appId: "1:472976640331:web:e6f64f5b67c8790fba80ce",
-    measurementId: "G-0GP164WPZ7"
-  };
 
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth();
 
-  // 로그인 폼 렌더링
+  // 로그인 상태 확인
+  const storedUser = localStorage.getItem('user');
+  if (storedUser) {
+    const user = JSON.parse(storedUser);
+    if (user.email === "admin@gmail.com") {
+      showMainContent();
+      adminHeader();
+      route();
+      window.history.replaceState({}, '', location.pathname);
+    } else {
+      showMainContent();
+      userHeader();
+      route();
+      window.history.replaceState({}, '', location.pathname);
+    }
+    return;
+  }
+
   login('#app');
 
-  // 이벤트 위임을 통해 링크 클릭 이벤트 처리
+  // 회원가입 <-> 로그인
   document.body.addEventListener('click', function (event) {
     if (event.target.id === 'signup-link') {
       event.preventDefault();
@@ -105,31 +122,36 @@ document.addEventListener('DOMContentLoaded', function () {
   // 로그인
   loginBtn.addEventListener('click', (event) => {
     event.preventDefault();
+    
     const loginEmail = document.querySelector('.login-email').value;
     const loginPassword = document.querySelector('.login-password').value;
-    signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    
+    setPersistence(auth, browserLocalPersistence)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      })
       .then((userCredential) => {
         console.log('로그인 성공', userCredential);
         const user = userCredential.user;
         localStorage.setItem('user', JSON.stringify(user));
-
+  
         showMainContent();
-
+  
         if (user.email === "admin@gmail.com") {
+          showMainContent();
           adminHeader();
-          window.history.pushState({}, '', '/admin');
+          window.history.replaceState({}, '', '/admin');
+          route();
         } else {
+          showMainContent();
           userHeader();
-          window.history.pushState({}, '', '/oasis');
+          window.history.replaceState({}, '', '/oasis');
+          route();
         }
-        route();
       })
       .catch((error) => {
         alert('아이디와 비밀번호를 다시 확인해주세요.');
         console.log('로그인 실패', error);
-        // ...
       });
-  });
-
-  
+  });  
 });

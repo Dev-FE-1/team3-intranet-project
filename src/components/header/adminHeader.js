@@ -1,14 +1,11 @@
-import adminNotice, {
-  adminNoticeCreate,
-} from "../../pages/admin/notice/adminNotice.js";
+import { showMainContent } from '../../main.js';
+import adminNotice, { adminNoticeCreate } from "../../pages/admin/notice/adminNotice.js";
 import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import adminProfile, {
-  adminProfileModify,
-} from "../../pages/admin/admin-profile/adminProfile.js";
+import adminProfile, { adminProfileModify,} from "../../pages/admin/admin-profile/adminProfile.js";
 import adminMainPage from "../../pages/admin/admin.js";
-// import { showMainContent } from '../../main.js';
-import './header.css'
+import { getAuth, signOut } from "firebase/auth";
+import "./header.css";
 
 export default function adminHeader() {
   const content = document.querySelector("#header");
@@ -39,6 +36,11 @@ export default function adminHeader() {
         <ul class="header-profile">
           <li>
             <button class="header-time">Working Hours</button>
+          </li>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
           </li>
           <li class="header-profile-image">
             <a href="/profile">
@@ -71,6 +73,11 @@ export default function adminHeader() {
           <li>
             <button class="header-time">Working Hours</button>
           </li>
+          <li class="logout">
+            <a href="/" id="logout">
+              <img src="public/images/header/logout.svg" alt="logout"/>
+            </a>
+          </li>
           <li class="header-profile-image">
             <a href="/admin-profile">
               <img src="public/images/header/header-profile.jpg" alt="my-profile"/>
@@ -79,8 +86,6 @@ export default function adminHeader() {
         </ul>
       </nav>
     </header>
-
-    
 
     <!-- Working Hours Modal -->
     <div class="start-time-modal hidden">
@@ -106,30 +111,55 @@ export default function adminHeader() {
       </div>
     </div>`;
 
+    
   workTimeButton();
+  
   window.addEventListener("popstate", (event) => {
-    console.log("popstate");
+    // console.log("popstate");
     route();
   });
-
+    
   document.body.addEventListener("click", navigatePage);
+  document.body.addEventListener("click", logout);
   route();
 }
 
+// 로그아웃
+function logout(event) {
+  event.preventDefault();
+  const logout = event.target.closest(".logout");
+  const auth = getAuth();
+  if (logout) {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("workStartTime");
+        window.location.href = "/";
+      })
+      .catch((error) => {
+        console.error("로그아웃 실패", error);
+      });
+  }
+}
+
+// 근무시간
 function workTimeButton() {
   const openButtons = document.querySelectorAll(".header-time");
   const startTimeModal = document.querySelector(".start-time-modal");
   const endTimeModal = document.querySelector(".end-time-modal");
   const startButton = startTimeModal.querySelector(".start");
   const endButton = endTimeModal.querySelector(".end");
-  // const closeButtonStart = startTimeModal.querySelector('.close');
-  // const closeButtonEnd = endTimeModal.querySelector('.close');
-  const modalBackgroundStart =
-    startTimeModal.querySelector(".modal-background");
+  const modalBackgroundStart = startTimeModal.querySelector(".modal-background");
   const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
-  let workStartTime;
+  let workStartTime = localStorage.getItem("workStartTime");
   let workInterval;
+
+  if (workStartTime) {
+    workStartTime = parseInt(workStartTime, 10);
+    workInterval = setInterval(updateWorkTime, 1000);
+    updateWorkTime();
+  }
 
   function toggleStartTimeModal() {
     startTimeModal.classList.toggle("hidden");
@@ -141,14 +171,16 @@ function workTimeButton() {
 
   function startWork() {
     workStartTime = Date.now();
+    localStorage.setItem("workStartTime", workStartTime);
     workInterval = setInterval(updateWorkTime, 1000);
-    openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
+    updateWorkTime();
     toggleStartTimeModal();
   }
 
   function endWork() {
     clearInterval(workInterval);
-    openButtons.forEach((button) => (button.textContent = "Working Hours"));
+    localStorage.removeItem("workStartTime");
+    openButtons.forEach((button) => button.textContent = "Working Hours");
     toggleEndTimeModal();
   }
 
@@ -157,9 +189,9 @@ function workTimeButton() {
     const elapsedTime = currentTime - workStartTime;
     const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
     const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
-    const second = Math.floor((elapsedTime % (1000 * 60)) / 1000);
+    const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
     openButtons.forEach(
-      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${second}초`)
+      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${seconds}초`)
     );
   }
 
@@ -204,6 +236,10 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
+  if (document.querySelector("#header").style.display === "none") {
+    document.querySelector("#header").style.display = "flex";
+  }
+
   switch (path) {
     case "/admin":
       adminMainPage("#content");
@@ -217,8 +253,11 @@ export function route() {
     case "/admin-absent-request":
       adminAbsentRequest("#content");
       break;
-    case "/admin-notice/noticeCreate":
+    case "/admin-notice/create":
       adminNoticeCreate("#content");
+      break;
+    case "/admin-notice/content":
+      adminNoticeContent("#content");
       break;
     case "/admin-profile":
       adminProfile("#content");
@@ -231,4 +270,8 @@ export function route() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", adminHeader);
+document.addEventListener("DOMContentLoaded", () => {
+  showMainContent();
+  adminHeader();
+  route();
+});
