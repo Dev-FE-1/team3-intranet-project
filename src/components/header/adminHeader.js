@@ -1,3 +1,4 @@
+import { showMainContent } from '../../main.js';
 import adminNotice, { adminNoticeCreate } from "../../pages/admin/notice/adminNotice.js";
 import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
@@ -5,7 +6,6 @@ import adminProfile, { adminProfileModify,} from "../../pages/admin/admin-profil
 import adminMainPage from "../../pages/admin/admin.js";
 import { getAuth, signOut } from "firebase/auth";
 import "./header.css";
-import { showMainContent } from '../../main.js';
 
 export default function adminHeader() {
   const content = document.querySelector("#header");
@@ -127,7 +127,6 @@ export default function adminHeader() {
 function logout(event) {
   event.preventDefault();
   const logout = event.target.closest(".logout");
-  event.preventDefault();
   const auth = getAuth();
   if (logout) {
     signOut(auth)
@@ -230,7 +229,7 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
-  if ((document.querySelector("#header").style.display = "none")) {
+  if (document.querySelector("#header").style.display = "none") {
     document.querySelector("#header").style.display = "flex";
   }
 
@@ -265,6 +264,7 @@ export function route() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  showMainContent();
   adminHeader();
   route();
 });

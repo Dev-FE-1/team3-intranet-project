@@ -1,9 +1,9 @@
+import adminHeader from './components/header/adminHeader.js';
+import userHeader from './components/header/userHeader.js';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence, signOut, browserLocalPersistence } from "firebase/auth";
 import { route } from './components/header/adminHeader.js';
-import adminHeader from './components/header/adminHeader.js';
-import userHeader from './components/header/userHeader.js';
 import '../src/style.css';
 
 const firebaseConfig = {
@@ -138,10 +138,12 @@ document.addEventListener('DOMContentLoaded', function () {
         showMainContent();
   
         if (user.email === "admin@gmail.com") {
+          showMainContent();
           adminHeader();
           window.history.replaceState({}, '', '/admin');
           route();
         } else {
+          showMainContent();
           userHeader();
           window.history.replaceState({}, '', '/oasis');
           route();

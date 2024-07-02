@@ -1,10 +1,10 @@
+import { showMainContent } from '../../main.js';
 import userMainPage from '../../pages/user/user.js';
 import userProfile from '../../pages/user/user-profile/userProfile.js';
 import userNotice from '../../pages/user/user-notice/userNotice.js';
 import userAbsentRequest from '../../pages/user/user-absent-request/userAbsentRequest.js';
 import { getAuth, signOut } from "firebase/auth";
 import './header.css'
-import { showMainContent } from '../../main.js';
 
 
 export default function userHeader() {
@@ -119,7 +119,6 @@ export default function userHeader() {
 function logout(event) {
   event.preventDefault();
   const logout = event.target.closest(".logout");
-  event.preventDefault();
   const auth = getAuth();
   if (logout) {
     signOut(auth)
@@ -245,6 +244,7 @@ export function route() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  showMainContent();
   userHeader();
   route();
 });
