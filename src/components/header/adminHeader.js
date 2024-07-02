@@ -1,7 +1,7 @@
 import adminNotice, { adminNoticeCreate } from "../../pages/admin/notice/adminNotice.js";
 import adminAbsentRequest from "../../pages/admin/absent-request/adminAbsentRequest.js";
 import employeeList from "../../pages/admin/employee-list/employeeList.js";
-import adminProfile, { adminProfileModify } from "../../pages/admin/admin-profile/adminProfile.js";
+import adminProfile, { adminProfileModify,} from "../../pages/admin/admin-profile/adminProfile.js";
 import adminMainPage from "../../pages/admin/admin.js";
 import { getAuth, signOut } from "firebase/auth";
 import "./header.css";
@@ -111,19 +111,25 @@ export default function adminHeader() {
       </div>
     </div>`;
 
-  workTimeButton();
-  window.addEventListener("popstate", (event) => {
-    console.log("popstate");
-    route();
-  });
-
+    
+    workTimeButton();
+    window.addEventListener("popstate", (event) => {
+      console.log("popstate");
+      route();
+    });
+    
   document.body.addEventListener("click", navigatePage);
+  document.body.addEventListener("click", logout);
+  route();
+}
 
-  // 로그아웃
-  const logoutButton = document.getElementById("logout");
-  logoutButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    const auth = getAuth();
+// 로그아웃
+function logout(event) {
+  event.preventDefault();
+  const logout = event.target.closest(".logout");
+  event.preventDefault();
+  const auth = getAuth();
+  if (logout) {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("user");
@@ -132,8 +138,7 @@ export default function adminHeader() {
       .catch((error) => {
         console.error("로그아웃 실패", error);
       });
-  });
-
+  }
   route();
 }
 

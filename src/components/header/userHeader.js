@@ -104,17 +104,24 @@ export default function userHeader() {
     </div>`;
 
   workTimeButton();
+  
   window.addEventListener("popstate", (event) => {
     console.log("popstate");
     route();
   });
 
   document.body.addEventListener("click", navigatePage);
+  document.body.addEventListener("click", logout);
+  route();
+}
 
-  const logoutButton = document.getElementById("logout");
-  logoutButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    const auth = getAuth();
+// 로그아웃
+function logout(event) {
+  event.preventDefault();
+  const logout = event.target.closest(".logout");
+  event.preventDefault();
+  const auth = getAuth();
+  if (logout) {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("user");
@@ -123,8 +130,7 @@ export default function userHeader() {
       .catch((error) => {
         console.error("로그아웃 실패", error);
       });
-  });
-
+  }
   route();
 }
 
