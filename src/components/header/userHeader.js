@@ -106,7 +106,7 @@ export default function userHeader() {
   workTimeButton();
   
   window.addEventListener("popstate", (event) => {
-    console.log("popstate");
+    // console.log("popstate");
     route();
   });
 
@@ -124,13 +124,13 @@ function logout(event) {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("user");
+        localStorage.removeItem("workStartTime");
         window.location.href = "/";
       })
       .catch((error) => {
         console.error("로그아웃 실패", error);
       });
   }
-  route();
 }
 
 // 근무시간
@@ -146,8 +146,14 @@ function workTimeButton() {
     startTimeModal.querySelector(".modal-background");
   const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
-  let workStartTime;
+  let workStartTime = localStorage.getItem("workStartTime");
   let workInterval;
+
+  if (workStartTime) {
+    workStartTime = parseInt(workStartTime, 10);
+    workInterval = setInterval(updateWorkTime, 1000);
+    updateWorkTime();
+  }
 
   function toggleStartTimeModal() {
     startTimeModal.classList.toggle("hidden");
@@ -159,13 +165,16 @@ function workTimeButton() {
 
   function startWork() {
     workStartTime = Date.now();
+    localStorage.setItem("workStartTime", workStartTime);
     workInterval = setInterval(updateWorkTime, 1000);
-    openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
+    // openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
+    updateWorkTime();
     toggleStartTimeModal();
   }
 
   function endWork() {
     clearInterval(workInterval);
+    localStorage.removeItem("workStartTime");
     openButtons.forEach((button) => (button.textContent = "Working Hours"));
     toggleEndTimeModal();
   }
@@ -222,7 +231,7 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
-  if(document.querySelector("#header").style.display = "none") {
+  if(document.querySelector("#header").style.display === "none") {
     document.querySelector("#header").style.display = "flex";
   }
   

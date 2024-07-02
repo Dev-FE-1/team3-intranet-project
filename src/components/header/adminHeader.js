@@ -112,11 +112,12 @@ export default function adminHeader() {
     </div>`;
 
     
-    workTimeButton();
-    window.addEventListener("popstate", (event) => {
-      console.log("popstate");
-      route();
-    });
+  workTimeButton();
+  
+  window.addEventListener("popstate", (event) => {
+    // console.log("popstate");
+    route();
+  });
     
   document.body.addEventListener("click", navigatePage);
   document.body.addEventListener("click", logout);
@@ -132,13 +133,13 @@ function logout(event) {
     signOut(auth)
       .then(() => {
         localStorage.removeItem("user");
+        localStorage.removeItem("workStartTime");
         window.location.href = "/";
       })
       .catch((error) => {
         console.error("로그아웃 실패", error);
       });
   }
-  route();
 }
 
 // 근무시간
@@ -148,12 +149,17 @@ function workTimeButton() {
   const endTimeModal = document.querySelector(".end-time-modal");
   const startButton = startTimeModal.querySelector(".start");
   const endButton = endTimeModal.querySelector(".end");
-  const modalBackgroundStart =
-    startTimeModal.querySelector(".modal-background");
+  const modalBackgroundStart = startTimeModal.querySelector(".modal-background");
   const modalBackgroundEnd = endTimeModal.querySelector(".modal-background");
 
-  let workStartTime;
+  let workStartTime = localStorage.getItem("workStartTime");
   let workInterval;
+
+  if (workStartTime) {
+    workStartTime = parseInt(workStartTime, 10);
+    workInterval = setInterval(updateWorkTime, 1000);
+    updateWorkTime();
+  }
 
   function toggleStartTimeModal() {
     startTimeModal.classList.toggle("hidden");
@@ -165,14 +171,16 @@ function workTimeButton() {
 
   function startWork() {
     workStartTime = Date.now();
+    localStorage.setItem("workStartTime", workStartTime);
     workInterval = setInterval(updateWorkTime, 1000);
-    openButtons.forEach((button) => (button.textContent = "0시간 0분 0초"));
+    updateWorkTime();
     toggleStartTimeModal();
   }
 
   function endWork() {
     clearInterval(workInterval);
-    openButtons.forEach((button) => (button.textContent = "Working Hours"));
+    localStorage.removeItem("workStartTime");
+    openButtons.forEach((button) => button.textContent = "Working Hours");
     toggleEndTimeModal();
   }
 
@@ -183,8 +191,7 @@ function workTimeButton() {
     const minutes = Math.floor((elapsedTime % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((elapsedTime % (1000 * 60)) / 1000);
     openButtons.forEach(
-      (button) =>
-        (button.textContent = `${hours}시간 ${minutes}분 ${seconds}초`)
+      (button) => (button.textContent = `${hours}시간 ${minutes}분 ${seconds}초`)
     );
   }
 
@@ -229,7 +236,7 @@ function navigatePage(event) {
 export function route() {
   const path = location.pathname;
 
-  if (document.querySelector("#header").style.display = "none") {
+  if (document.querySelector("#header").style.display === "none") {
     document.querySelector("#header").style.display = "flex";
   }
 
